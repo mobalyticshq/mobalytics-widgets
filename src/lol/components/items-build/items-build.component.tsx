@@ -1,0 +1,55 @@
+import { FunctionComponent, h } from 'preact';
+
+import { css } from 'goober';
+
+import { ItemsBuildT } from './types';
+import { formatItemsBuildType } from '../../format/texts';
+import { ItemIcon } from '../images/item-icon.component';
+import { Text12x500Mixin } from '../../ui/typography';
+
+interface Props {
+  itemsBuild: ItemsBuildT;
+  className?: string;
+}
+
+export const ItemsBuild: FunctionComponent<Props> = props => {
+  const { itemsBuild, className } = props;
+  return (
+    <div className={className} >
+      <p className={Label}>{itemsBuild.type && formatItemsBuildType(itemsBuild.type)}</p>
+      <div className={Row}>
+        {itemsBuild.items.map((it) => {
+          return (
+            <ItemIcon
+              key={it.riotId}
+              slug={it.riotId.toString()}
+              className={Item}
+              {...it}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const Row = css`
+  display: flex;
+`;
+
+const Label = css`
+  ${Text12x500Mixin};
+  color: #6B6889;
+  margin-bottom: 4px;
+  padding: 0;
+  margin-top: 12px;
+`;
+
+const Item = css`
+  margin: 0 0 0 8px;
+
+  &:first-child{
+    margin-left: 0;
+  }
+`;
+

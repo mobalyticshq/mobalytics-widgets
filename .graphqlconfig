@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "LOL Dynamic": {
+      "schemaPath": "src/lol/api/dynamic/schema.json",
+      "includes": [
+        "./src/lol/api/dynamic/**/*.gql.ts"
+      ]
+    },
+    "LOL Static": {
+      "schemaPath": "./src/lol/api/static/schema.json",
+      "includes": [
+        "./src/lol/api/static/**/*.gql.ts"
+      ]
+    }
+  }
+}
