@@ -110,8 +110,8 @@ LoL Champion Tooltip Widget uses links to mobalytics champion build page as a ho
 ## FAQ
 
 ### How to find champion slug to use in a widget?
-1. Open mobalytics [champions page](https://app.mobalytics.gg/lol/champions)
-2. Navigate to specific champion page e.g Achri
+1. Open Mobalytics [champions page](https://app.mobalytics.gg/lol/champions)
+2. Navigate to specific champion page e.g "ahri"
 3. Copy champion slug from the page URL
   
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-how-to-find-lol-champion-slug.jpg"
