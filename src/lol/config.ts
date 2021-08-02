@@ -5,5 +5,5 @@ export const CDN_COMMON_ICON_PATH = 'https://fastcdn.mobalytics.gg/assets/common
 export const CDN_LOL_VIDEO_PATH = 'https://fastcdn.mobalytics.gg/assets/lol/video';
 
 export const MOBA_APP_LINK = 'https://app.mobalytics.gg';
-
 export const MOBA_HOME_URL = 'https://mobalytics.gg/';
+export const MOBA_WIDGET_REPO_URL = 'https://github.com/mobalyticshq/mobalytics-widgets/';

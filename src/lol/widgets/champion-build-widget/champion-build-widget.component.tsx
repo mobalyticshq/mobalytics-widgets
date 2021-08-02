@@ -35,8 +35,8 @@ const ChampionBuildWidget: FunctionComponent<Props> = props => {
       ) : (
         <ChampionBuildWidgetError
           imgSrc={amumuCrying()}
-          title={'Something Wrong'}
-          text={'We are so sorry, but it seems that this widget or the Mobalytics platform are experiencing some problems at the moment.'}
+          title={'Something Went Wrong'}
+          text={'Sorry, but it appears that this widget or Mobalytics is experiencing some problems at the moment.'}
           link={{
             text: 'Check Mobalytics Status',
             url: MOBA_APP_LINK,

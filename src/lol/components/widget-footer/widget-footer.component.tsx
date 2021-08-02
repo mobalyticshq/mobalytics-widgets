@@ -1,13 +1,13 @@
 import { FunctionComponent, h } from 'preact';
-
 import { css } from 'goober';
+import clsx from 'clsx';
+
 import { mobalyticsLogoSymbol } from '../../utils/images';
 
 import { MiddleDot } from '../../format/symbols';
 import { Text12x400Mixin, Text12x500Mixin } from '../../ui/typography';
-import clsx from 'clsx';
 import { genChampionPath } from '../../utils/links';
-import { MOBA_HOME_URL } from '../../config';
+import { MOBA_HOME_URL, MOBA_WIDGET_REPO_URL } from '../../config';
 
 interface Props {
   championName: string;
@@ -22,7 +22,7 @@ export const WidgetFooter: FunctionComponent<Props> = props => {
       <div className={LinksWrapper}>
         <a href={genChampionPath(championSlug)}>See more {championName} builds</a>
         <span>{MiddleDot}</span>
-        <a href="#">Get widget like that</a>
+        <a href={MOBA_WIDGET_REPO_URL}>Get blog widget</a>
       </div>
       <div className={LogoWrapper}>
         <span>Powered by</span>

@@ -2,6 +2,7 @@ import { FunctionComponent, h} from 'preact';
 import { useQuery } from 'graphql-hooks';
 import { css } from 'goober';
 import clsx from 'clsx';
+
 import { DYNAMIC_CHAMPION_BUILD_QUERY_GQL } from '../../../api/dynamic/queries/champion-build-query.gql';
 import { lolApi } from '../../../api/api';
 import { NNumber, Nullable } from '../../../../common/types/lang';
@@ -152,7 +153,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
             <ChampionBuildWidgetError
               imgSrc={emoteImage('blitzcrank.png')}
               title={'Not Enough Data'}
-              text={`It seems there are not enough game data to show any reliable build. Most likely a new patch just started or nobody is playing ${championName} in ${role} role.`}
+              text={`We need more game data to show a reliable build. This may be because a new patch just started or because there aren't enough players playing ${championName} as ${role}.`}
               link={{
                 text: `Check other ${championName} builds on Mobalytics`,
                 url: genChampionPath(champion),
