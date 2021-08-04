@@ -73,7 +73,8 @@ const CardBg = css`
   left: 50%;
   transform: translate(-50%, -50%);
   display: block;
-  width: auto;
+  width: 228px;
+  max-width: 228px!important;
   height: 164px;
 `;
 

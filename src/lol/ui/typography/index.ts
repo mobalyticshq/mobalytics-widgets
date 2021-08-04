@@ -15,6 +15,13 @@ export const Text18x400Mixin = `
   line-height: 20px;
 `;
 
+export const Text20x400Mixin = `
+  font-family: apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 20px;
+`;
+
 export const Text16x700Mixin = `
   font-family: apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   font-size: 16px;

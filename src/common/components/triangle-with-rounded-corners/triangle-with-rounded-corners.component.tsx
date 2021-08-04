@@ -21,6 +21,6 @@ export const TriangleWithRoundedCorners: FunctionComponent<Props> = props => {
 
 const Icon = css`
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 8px;
 `;

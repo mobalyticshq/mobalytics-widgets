@@ -2,7 +2,7 @@ import { FunctionComponent, h } from 'preact';
 import { css } from 'goober';
 import clsx from 'clsx';
 import { TriangleWithRoundedCorners } from '../triangle-with-rounded-corners/triangle-with-rounded-corners.component';
-import { Text12x400Mixin, Text32x400Mixin } from '../../../lol/ui/typography';
+import { Text12x400Mixin, Text20x400Mixin } from '../../../lol/ui/typography';
 
 interface Props {
   title: string;
@@ -42,7 +42,13 @@ const MetricValue = css`
 `;
 
 const MetricMeta = css`
+  width: 13px;
   margin-left: 4px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1px;
 `;
 
 const Title = css`
@@ -54,13 +60,12 @@ const Title = css`
 `;
 
 const Value = css`
-  ${Text32x400Mixin};
+  ${Text20x400Mixin};
+  font-family: Oswald, sans-serif;
   line-height: 32px;
   color: #fff;
   margin: 0;
   padding: 0;
-  font-family: apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  letter-spacing: -1px;
 `;
 
 const Symbol = css`
