@@ -33,7 +33,7 @@ export const ChampionTooltipFooter: FunctionComponent<Props> = props => {
 
 const Wrapper = css`
   ${Text12x500Mixin};
-  color: #aaabca;
+  color: #aaabca!important;
   height: 34px;
 
   display: flex;
@@ -44,11 +44,11 @@ const Wrapper = css`
   a {
     display: block;
     margin: 0 8px;
-    color: #f2bf43;
+    color: #f2bf43!important;
 
     &:focus,
     &:hover {
-      color: #38C6F4;
+      color: #38C6F4!important;
     }
   }
 `;

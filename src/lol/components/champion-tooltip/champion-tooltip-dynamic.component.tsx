@@ -99,7 +99,7 @@ const Row = css`
 
 const Title = css`
   ${Text12x400Mixin};
-  color: #6b6889;
+  color: #6B6889!important;
   margin-top: 8px;
   margin-bottom: 8px;
 `;

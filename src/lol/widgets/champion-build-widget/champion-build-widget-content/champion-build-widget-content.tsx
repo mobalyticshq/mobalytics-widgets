@@ -177,7 +177,7 @@ const Wrapper = css`
   display: flex;
   flex-direction: column;
   min-width: ${MIN_WIDGET_WIDTH}px;
-  background-color: #2d2652;
+  background-color: #2d2652!important;
   border-radius: 6px;
 `;
 

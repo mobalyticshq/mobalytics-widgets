@@ -58,7 +58,7 @@ const AbilityKeySymbol = css`
 
 const Index = css`
   ${Text12x700Mixin};
-  color: #6b6889;
+  color: #6B6889!important;
   text-align: center;
   height: 20px;
   margin-bottom: 2px;

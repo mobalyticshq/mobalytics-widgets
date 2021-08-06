@@ -84,14 +84,14 @@ const Row = css`
 
 const CardContent = css`
   ${Text12x500Mixin};
-  color: #fff;
+  color: #fff!important;
   position: relative;
   z-index: 2;
 
   & > span {
     ${Text16x700Mixin};
     display: block;
-    color: #fff;
+    color: #fff!important;
     margin-bottom: 4px;
   }
 `;

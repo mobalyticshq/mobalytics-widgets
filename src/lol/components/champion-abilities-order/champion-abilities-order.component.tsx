@@ -76,7 +76,7 @@ const Col = css`
 
 const Index = css`
   ${Text12x700Mixin};
-  color: #6b6889;
+  color: #6B6889!important;
   cursor: default;
   height: 20px;
   margin-bottom: 2px;

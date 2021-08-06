@@ -57,7 +57,7 @@ const Wrapper = css`
 
 const Title = css`
   ${Text12x500Mixin};
-  color: #fff;
+  color: #fff!important;
   text-transform: uppercase;
 `;
 
@@ -81,14 +81,14 @@ const RoleIconCss = css`
 
 const Text = css`
   ${Text12x400Mixin};
-  color: #6B6889;
+  color: #6B6889!important;
   min-width: 300px;
   display: flex;
   align-items: center;
 
   span{
     font-weight: 500;
-    color: #fff;
+    color: #fff!important;
     margin: 0 3px;
   }
 `;

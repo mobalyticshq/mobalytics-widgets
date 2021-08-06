@@ -23,24 +23,24 @@ export const RichText: FunctionComponent<Props> = props => {
 const Wrapper = css`
   ${Text14x400Mixin};
   font-family: apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  color: #8890b5;
+  color: #8890b5!important;
   letter-spacing: 0.25px;
   display: inline-block;
   vertical-align: middle;
 
   strong {
-    color: #ccae70;
+    color: #f2bf43!important;
     font-weight: 500;
   }
 
   a {
-    color: #4496dd;
+    color: #4496dd!important;
   }
 
   b,
   i,
   u {
-    color: #ffffff;
+    color: #ffffff!important;
   }
 
   ul,

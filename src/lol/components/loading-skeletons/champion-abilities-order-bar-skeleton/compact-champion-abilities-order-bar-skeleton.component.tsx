@@ -30,7 +30,7 @@ const Separator = css`
   ${Text10x400Mixin};
   display: flex;
   margin: 0 6px;
-  color: #3C385C;
+  color: #3C385C!important;
 `;
 
 const SkullWrapper = css`

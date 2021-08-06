@@ -54,7 +54,7 @@ const ItemHeaderIcon = css`
 
 const ItemTitle = css`
   ${Text18x400Mixin};
-  color: #f2bf43;
+  color: #f2bf43!important;
   margin-bottom: 5px;
   margin-left: 8px;
   margin-right: 8px;

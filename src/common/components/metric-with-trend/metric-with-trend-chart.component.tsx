@@ -53,7 +53,7 @@ const MetricMeta = css`
 
 const Title = css`
   ${Text12x400Mixin};
-  color: #6b6889;
+  color: #6B6889!important;
   letter-spacing: 0.25px;
   margin: 0;
   padding: 0;
@@ -63,14 +63,14 @@ const Value = css`
   ${Text20x400Mixin};
   font-family: Oswald, sans-serif!important;
   line-height: 32px;
-  color: #fff;
+  color: #fff!important;
   margin: 0;
   padding: 0;
 `;
 
 const Symbol = css`
   ${Text12x400Mixin};
-  color: #fff;
+  color: #fff!important;
   line-height: 1;
   text-align: center;
   margin: 0;

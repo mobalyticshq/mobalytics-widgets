@@ -95,13 +95,13 @@ const LineWrapper = (color: string) => css`
 `;
 
 const Icon = css`
-  max-width: 32px;
-  max-height: 32px;
+  width: 32px!important;
+  height: 32px!important;
 `;
 
 const MainIcon = css`
-  max-width: 36px;
-  max-height: 36px;
+  width: 36px!important;
+  height: 36px!important;
 `;
 
 const KeystoneIcon = css`

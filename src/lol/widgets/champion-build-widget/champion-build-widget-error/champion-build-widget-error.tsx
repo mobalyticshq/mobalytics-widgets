@@ -37,12 +37,12 @@ const Wrapper = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #2d2652;
+  background-color: #2d2652!important;
   border-radius: 5px;
   padding: 20px;
 `;
 
 const Error = css`
   width: 100%;
-  max-width: 400px;
+  max-width: 400px!important;
 `;

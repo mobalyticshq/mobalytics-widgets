@@ -68,17 +68,17 @@ const LinksWrapper = css`
   padding: 10px 0;
 
   span {
-    color: #6B6889;
+    color: #6B6889!important;
     margin: 0 4px;
   }
 
   a {
-    color: #F2BF43;
+    color: #f2bf43!important;
     transition: color ease .2s;
 
     &:focus,
     &:hover{
-      color: #38C6F4;
+      color: #38C6F4!important;
     }
   }
 `;
@@ -87,7 +87,7 @@ const LogoWrapper = css`
   ${Text12x500Mixin};
   line-height: 20px;
   height: 50px;
-  color: #6B6889;
+  color: #6B6889!important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +102,7 @@ const LogoWrapper = css`
 const Name = css`
   ${Text12x400Mixin};
   line-height: 20px;
-  color: #fff;
+  color: #fff!important;
 
   span{
     font-weight: 700;

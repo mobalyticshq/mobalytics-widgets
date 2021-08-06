@@ -76,7 +76,7 @@ const LogoWrapper = css`
   ${Text12x500Mixin};
   line-height: 20px;
   height: 50px;
-  color: #6B6889;
+  color: #6B6889!important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@ const LogoWrapper = css`
 const Name = css`
   ${Text12x400Mixin};
   line-height: 20px;
-  color: #fff;
+  color: #fff!important;
 
   span{
     font-weight: 700;

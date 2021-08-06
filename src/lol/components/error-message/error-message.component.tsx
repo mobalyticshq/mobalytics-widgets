@@ -43,7 +43,7 @@ const Img = css`
 const Title = css`
   ${Text16x500Mixin};
   text-align: center;
-  color: #fff;
+  color: #fff!important;
   margin: 4px 0 8px 0;
 `;
 
@@ -57,13 +57,13 @@ const Text = css`
 const Link = css`
   ${Text14x500Mixin};
   text-align: center;
-  color: #F2BF43;
+  color: #f2bf43!important;
   margin: 20px 0 0 0;
 
   transition: color ease .2s;
 
   &:focus,
   &:hover{
-    color: #38C6F4;
+    color: #38C6F4!important;
   }
 `;

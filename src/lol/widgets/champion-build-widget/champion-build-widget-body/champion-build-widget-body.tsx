@@ -42,7 +42,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
     <div className={clsx(Content, className)}>
       <div className={clsx(Row, !isCompact && FlexEnd)}>
         <div className={clsx(isSmall && CompactRunesWrapper, Col)}>
-          <div className={Title}>{t('Runes')}</div>
+          <div style={Title}>{t('Runes')}</div>
           <div>
             {perks?.IDs && (
               <IsCompactBlock<RunesComponentProps>
@@ -61,7 +61,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
         </div>
 
         <div className={Col}>
-          <div className={Title}>{t('Spells')}</div>
+          <div style={Title}>{t('Spells')}</div>
           <div>
             {spells && <Spells spells={spells} className={SpellsStyle} />}
           </div>
@@ -69,7 +69,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
       </div>
 
       <div className={Col}>
-        <div className={Title}>{t('Items')}</div>
+        <div style={Title}>{t('Items')}</div>
         <div>
           {itemsBuild && <ItemsBuildChain itemsBuild={itemsBuild}/>}
         </div>
@@ -80,7 +80,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
         {!isCompact && abilities && skillOrder && (
           <div>
             <div className={TitleWrapper}>
-              <div className={Title}>{t('Skill Order')}</div>
+              <div style={Title}>{t('Skill Order')}</div>
               {skillMaxOrder && <ChampionAbilitiesOrderBar skillsKeys={skillMaxOrder}/>}
             </div>
             <ChampionAbilitiesOrder abilities={abilities} skillOrder={skillOrder}/>
@@ -89,7 +89,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
 
         {isCompact && (
           <div className={SkillPriority}>
-            <div className={Title}>{t('Skill Priority')}</div>
+            <div style={Title}>{t('Skill Priority')}</div>
             {abilitiesOrder && (
               <CompactChampionAbilitiesOrderBar
                 abilities={abilitiesOrder}
@@ -101,7 +101,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
 
         {isCompact && !isSmall && (
           <div>
-            <div className={Title}>{t('Skill Order')}</div>
+            <div style={Title}>{t('Skill Order')}</div>
             {skillOrder && <CompactChampionAbilitiesOrder skillOrder={skillOrder}/>}
           </div>
         )}
@@ -151,7 +151,7 @@ const CompactRunesWrapper = css`
 
 const Title = css`
   ${Text12x500Mixin};
-  color: #fff;
+  color: #fff!important;
   text-transform: uppercase;
   margin: 0 8px 8px 0;
 `;

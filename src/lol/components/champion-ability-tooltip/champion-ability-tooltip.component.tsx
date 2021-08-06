@@ -78,7 +78,7 @@ export const ChampionAbilityTooltip: FunctionComponent<Props> = props => {
 
 const Wrapper = css`
   width: 280px;
-  background-color: #19133d;
+  background-color: #19133d!important;
   border: 1px solid #221843;
   border-radius: 5px;
 `;
@@ -104,7 +104,7 @@ const Title = css`
   ${Text12x500Mixin};
   display: flex;
   align-items: center;
-  color: #fff;
+  color: #fff!important;
 `;
 
 const ChampionAbilityKeySymbolStyled = css`
@@ -120,18 +120,18 @@ const ChampionAbilityKeySymbolStyled = css`
 `;
 
 const Description = css`
-  color: #aaabca;
+  color: #aaabca!important;
   line-height: 1.5;
   ${Text12x400Mixin};
 `;
 
 const AbilityMetric = css`
   ${Text12x400Mixin};
-  color: #8890b5;
+  color: #8890b5!important;
 `;
 
 const AbilityMetricValue = css`
   ${Text12x500Mixin};
-  color: #ffffff;
+  color: #ffffff!important;
 `;
 

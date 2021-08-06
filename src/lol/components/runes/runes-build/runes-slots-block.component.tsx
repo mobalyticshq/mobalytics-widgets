@@ -66,14 +66,14 @@ const Header = css`
 
 const Name = css`
   ${Text14x700Mixin};
-  color: #B3B4D0;
+  color: #B3B4D0!important;
   text-transform: capitalize;
   margin-left: 8px;
 `;
 
 const PathIcon = css`
-  max-width: 36px;
-  max-height: 36px;
+  width: 36px!important;
+  height: 36px!important;
 `;
 
 const Row = css`

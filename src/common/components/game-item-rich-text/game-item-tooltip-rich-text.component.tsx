@@ -21,7 +21,7 @@ export const GameItemTooltipRichText: FunctionComponent<Props> = props => {
 
 const StyledLolRichText = css`
   position: relative;
-  color: #b3b4d0;
+  color: #b3b4d0!important;
 
   .custom {
     display: inline;
@@ -29,12 +29,12 @@ const StyledLolRichText = css`
 
   .stats {
     display: block;
-    color: #6b6889;
+    color: #6b6889!important;
   }
 
   .attention {
     font-weight: 500;
-    color: #ffffff;
+    color: #ffffff!important;
   }
 
   i,
@@ -44,15 +44,15 @@ const StyledLolRichText = css`
   .passive,
   .rarityMythic {
     font-weight: 700;
-    color: #ffffff;
+    color: #ffffff!important;
   }
 
   .rarityMythic {
-    color: #fec205;
+    color: #fec205!important;
   }
 
   .magicDamage {
-    color: #84d0fe;
+    color: #84d0fe!important;
   }
 
   li {

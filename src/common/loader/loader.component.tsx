@@ -39,7 +39,7 @@ const Wrapper = css`
 `;
 
 const Dot = css`
-  background-color: #8991b6;
+  background-color: #8991b6!important;
   border-radius: 100%;
   display: inline-block;
   height: 15px;
