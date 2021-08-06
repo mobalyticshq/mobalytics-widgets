@@ -61,7 +61,7 @@ const Title = css`
 
 const Value = css`
   ${Text20x400Mixin};
-  font-family: Oswald, sans-serif;
+  font-family: Oswald, sans-serif!important;
   line-height: 32px;
   color: #fff;
   margin: 0;

@@ -25,37 +25,37 @@ export const ChampionBuildWidgetLoading: FunctionComponent<Props> = props => {
       <div className={Content}>
         <div className={clsx(Row, !isCompact && FlexEnd)}>
           <div className={clsx(isSmall && CompactRunesWrapper, Col)}>
-            <h3 className={Title} />
+            <div className={Title} />
             {isCompact ? <RunesBuildCompactBlockSkeleton /> : <RunesBuildBlockSkeleton />}
           </div>
           <div className={Col}>
-            <h3 className={Title} />
+            <div className={Title} />
             <div>
               <SpellsSkeleton />
             </div>
           </div>
         </div>
         <div className={Col}>
-          <h3 className={Title} />
+          <div className={Title} />
           <ItemsBuildSkeleton />
         </div>
 
         <div className={clsx(Col, SkillOrderRow)}>
           {!isCompact && (
             <div>
-              <h3 className={Title} />
+              <div className={Title} />
               <ChampionAbilitiesOrderSkeleton/>
             </div>
           )}
           {isCompact && (
             <div>
-              <h3 className={Title} />
+              <div className={Title} />
               <CompactChampionAbilitiesOrderBarSkeleton className={clsx(isCompact && !isSmall && AbilitiesOrder)}/>
             </div>
           )}
           {isCompact && !isSmall && (
             <div>
-              <h3 className={Title} />
+              <div className={Title} />
               <CompactChampionAbilitiesOrderSkeleton />
             </div>
           )}

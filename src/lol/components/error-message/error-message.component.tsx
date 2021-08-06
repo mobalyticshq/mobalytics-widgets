@@ -19,8 +19,8 @@ export const ErrorMessage: FunctionComponent<Props> = props => {
   return (
     <div className={clsx(Wrapper, className)}>
       <img className={Img} src={imgSrc} alt="" role="presentation" />
-      <h3 className={Title}>{title}</h3>
-      <p className={Text}>{text}</p>
+      <div className={Title}>{title}</div>
+      <div className={Text}>{text}</div>
       {link && <a href={link.url} className={Link}>{link.text}</a>}
     </div>
   );

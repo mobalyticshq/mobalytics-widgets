@@ -16,7 +16,7 @@ export const ItemsBuild: FunctionComponent<Props> = props => {
   const { itemsBuild, className } = props;
   return (
     <div className={className} >
-      <p className={Label}>{itemsBuild.type && formatItemsBuildType(itemsBuild.type)}</p>
+      <div className={Label}>{itemsBuild.type && formatItemsBuildType(itemsBuild.type)}</div>
       <div className={Row}>
         {itemsBuild.items.map((it) => {
           return (

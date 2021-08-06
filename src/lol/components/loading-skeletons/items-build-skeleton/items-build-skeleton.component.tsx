@@ -11,7 +11,7 @@ export const ItemsBuildSkeleton: FunctionComponent<Props> = props => {
   return (
     <div className={clsx(Wrapper, className)} >
       <div className={Row}>
-        <p className={Label} />
+        <div className={Label} />
         <div className={Chain}>
           <div className={Item}/>
           <div className={Item}/>
@@ -19,14 +19,14 @@ export const ItemsBuildSkeleton: FunctionComponent<Props> = props => {
         </div>
       </div>
       <div className={Row}>
-        <p className={Label} />
+        <div className={Label} />
         <div className={Chain}>
           <div className={Item}/>
           <div className={Item}/>
         </div>
       </div>
       <div className={Row}>
-        <p className={Label} />
+        <div className={Label} />
         <div className={Chain}>
           <div className={Item}/>
           <div className={Item}/>
@@ -34,7 +34,7 @@ export const ItemsBuildSkeleton: FunctionComponent<Props> = props => {
         </div>
       </div>
       <div className={Row}>
-        <p className={Label} />
+        <div className={Label} />
         <div className={Chain}>
           <div className={Item}/>
           <div className={Item}/>

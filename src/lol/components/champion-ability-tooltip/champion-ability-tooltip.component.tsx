@@ -49,27 +49,27 @@ export const ChampionAbilityTooltip: FunctionComponent<Props> = props => {
         </div>
         {!!description && <RichText className={Description} markdown={description} />}
         {!!range && (
-          <p className={AbilityMetric}>
+          <div className={AbilityMetric}>
             <em>{t('Range')}:</em>
             &nbsp;
             <span className={AbilityMetricValue}>{range}</span>
-          </p>
+          </div>
         )}
         {!!cost && cost !== '0' && (
-          <p className={AbilityMetric}>
+          <div className={AbilityMetric}>
             <em>{t('Cost')}:</em>
             &nbsp;
             <SkillProgressionText text={cost} />
-          </p>
+          </div>
         )}
         {!!cooldown && (
-          <p className={AbilityMetric}>
+          <div className={AbilityMetric}>
             <em>{t('Cooldown')}:</em>
             &nbsp;
             <SkillProgressionText text={cooldown} />
             &nbsp;
             <span>{t('seconds')}</span>
-          </p>
+          </div>
         )}
       </div>
     </div>
