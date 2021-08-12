@@ -33,7 +33,7 @@ const ItemWrapper = css`
   border: 1px solid #2f2650;
   border-radius: 5px;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
-  line-height: 20px;
+  line-height: 20px!important;
   display: flex;
   flex-direction: column;
   width: 400px;

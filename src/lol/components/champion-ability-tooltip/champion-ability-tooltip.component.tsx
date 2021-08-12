@@ -113,7 +113,7 @@ const ChampionAbilityKeySymbolStyled = css`
   border-radius: 3px;
   cursor: default;
 
-  line-height: 20px;
+  line-height: 20px!important;
   text-transform: uppercase;
   text-align: center;
   margin-left: 4px;
@@ -121,7 +121,7 @@ const ChampionAbilityKeySymbolStyled = css`
 
 const Description = css`
   color: #aaabca!important;
-  line-height: 1.5;
+  line-height: 1.5!important;
   ${Text12x400Mixin};
 `;
 

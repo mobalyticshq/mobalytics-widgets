@@ -40,7 +40,7 @@ const Wrapper = css`
 
 const AbilityKey = css`
   ${Text12x500Mixin};
-  line-height: 16px;
+  line-height: 16px!important;
   text-align: center;
 
   position: absolute;

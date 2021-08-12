@@ -74,7 +74,7 @@ const LinksWrapper = css`
 
 const LogoWrapper = css`
   ${Text12x500Mixin};
-  line-height: 20px;
+  line-height: 20px!important;
   height: 50px;
   color: #6B6889!important;
   display: flex;
@@ -90,7 +90,7 @@ const LogoWrapper = css`
 
 const Name = css`
   ${Text12x400Mixin};
-  line-height: 20px;
+  line-height: 20px!important;
   color: #fff!important;
 
   span{

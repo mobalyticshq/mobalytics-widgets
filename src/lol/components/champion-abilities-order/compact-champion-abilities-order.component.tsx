@@ -50,7 +50,7 @@ const AbilityKeySymbol = css`
   background-color: rgba(76, 66, 120, 0.4);
   cursor: default;
 
-  line-height: 20px;
+  line-height: 20px!important;
   text-transform: uppercase;
   text-align: center;
   position: relative;

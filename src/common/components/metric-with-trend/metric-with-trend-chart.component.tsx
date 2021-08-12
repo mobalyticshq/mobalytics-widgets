@@ -19,12 +19,12 @@ export const MetricWithTrend: FunctionComponent<Props> = props => {
 
   return (
     <div className={clsx(Wrapper, className)}>
-      <p className={Title}>{title}</p>
+      <div className={Title}>{title}</div>
       <div className={MetricValue}>
-        <p className={Value}>{valueFormatterFn(value)}</p>
+        <div className={Value}>{valueFormatterFn(value)}</div>
         <div className={MetricMeta}>
           <TriangleWithRoundedCorners isDown={isDown} />
-          {symbol && <p className={Symbol}>{symbol}</p>}
+          {symbol && <div className={Symbol}>{symbol}</div>}
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@ const Title = css`
 const Value = css`
   ${Text20x400Mixin};
   font-family: Oswald, sans-serif!important;
-  line-height: 32px;
+  line-height: 32px!important;
   color: #fff!important;
   margin: 0;
   padding: 0;
@@ -71,7 +71,7 @@ const Value = css`
 const Symbol = css`
   ${Text12x400Mixin};
   color: #fff!important;
-  line-height: 1;
+  line-height: 1!important;
   text-align: center;
   margin: 0;
   padding: 0;
