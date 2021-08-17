@@ -7,26 +7,26 @@ export const CHAMPION_TOOLTIP_QUERY_GQL = gql`
         build{
           role
         }
+        stats {
+          winRateHistory {
+            x
+            value
+          }
+          pickRateHistory {
+            x
+            value
+          }
+          banRateHistory {
+            x
+            value
+          }
+        }
       }
       championsList(filters: { slug: $championSlug, elo: $skillLevel }) {
         champions {
           roleData {
             role
             champion {
-              stats {
-                winRateHistory {
-                  x
-                  value
-                }
-                pickRateHistory {
-                  x
-                  value
-                }
-                banRateHistory {
-                  x
-                  value
-                }
-              }
               countersOptions(top: 5) {
                 options {
                   matchupSlug

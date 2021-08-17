@@ -80,7 +80,8 @@ export const ChampionTooltipWidgetContent: FunctionComponent<Props> = forwardRef
     }
 
     const championType = (firstItem(championMeta?.flatData.type)?.flatData);
-    const dynamicChampionData = firstItem(dynamicData?.lol?.championsList?.champions)?.roleData?.find(
+    const dynamicChampionData = dynamicData?.lol?.champion;
+    const dynamicChampionRoleData = firstItem(dynamicData?.lol?.championsList?.champions)?.roleData?.find(
       it => it.role === roleName
     )?.champion;
 
@@ -88,7 +89,7 @@ export const ChampionTooltipWidgetContent: FunctionComponent<Props> = forwardRef
       it => it.skillLevel === staticSkillLevel && validateStrEnumValue<Rolename>(Rolename, it.role) === roleName
     )?.tier;
 
-    const countersOptions = dynamicChampionData?.countersOptions?.options;
+    const countersOptions = dynamicChampionRoleData?.countersOptions?.options;
     const { winRateHistory, pickRateHistory, banRateHistory } = dynamicChampionData?.stats || {};
 
     const counterChampions = countersOptions && sortBy(formatCounters(countersOptions), it => it.winRate, numberComparator).slice(0, 4)

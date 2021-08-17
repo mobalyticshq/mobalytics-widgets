@@ -3,11 +3,11 @@ import { calcWinRate } from '../../../../common/utils/math';
 import { filterNonNull } from '../../../../common/utils/list';
 import {
   LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_countersOptions_options,
-  LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats_winRateHistory,
+  LolChampionTooltipDynamicQuery_lol_champion_stats_winRateHistory,
 } from '../../../types/gql-dynamic/LolChampionTooltipDynamicQuery';
 
 export function formatMetric(
-  history: LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats_winRateHistory[]
+  history: LolChampionTooltipDynamicQuery_lol_champion_stats_winRateHistory[]
 ): Nullable<{ value: number; isDown: boolean }> {
   const list = history.slice().reverse() || [];
   const [curr, prev] = list;

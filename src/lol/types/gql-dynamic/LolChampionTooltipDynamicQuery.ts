@@ -14,34 +14,35 @@ export interface LolChampionTooltipDynamicQuery_lol_champion_build {
   role: Rolename | null;
 }
 
+export interface LolChampionTooltipDynamicQuery_lol_champion_stats_winRateHistory {
+  __typename: "LolChampionStatsHistoryPoint";
+  x: string | null;
+  value: number | null;
+}
+
+export interface LolChampionTooltipDynamicQuery_lol_champion_stats_pickRateHistory {
+  __typename: "LolChampionStatsHistoryPoint";
+  x: string | null;
+  value: number | null;
+}
+
+export interface LolChampionTooltipDynamicQuery_lol_champion_stats_banRateHistory {
+  __typename: "LolChampionStatsHistoryPoint";
+  x: string | null;
+  value: number | null;
+}
+
+export interface LolChampionTooltipDynamicQuery_lol_champion_stats {
+  __typename: "LolChampionStats";
+  winRateHistory: LolChampionTooltipDynamicQuery_lol_champion_stats_winRateHistory[] | null;
+  pickRateHistory: LolChampionTooltipDynamicQuery_lol_champion_stats_pickRateHistory[] | null;
+  banRateHistory: LolChampionTooltipDynamicQuery_lol_champion_stats_banRateHistory[] | null;
+}
+
 export interface LolChampionTooltipDynamicQuery_lol_champion {
   __typename: "LolChampion";
   build: LolChampionTooltipDynamicQuery_lol_champion_build | null;
-}
-
-export interface LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats_winRateHistory {
-  __typename: "LolChampionStatsHistoryPoint";
-  x: string | null;
-  value: number | null;
-}
-
-export interface LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats_pickRateHistory {
-  __typename: "LolChampionStatsHistoryPoint";
-  x: string | null;
-  value: number | null;
-}
-
-export interface LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats_banRateHistory {
-  __typename: "LolChampionStatsHistoryPoint";
-  x: string | null;
-  value: number | null;
-}
-
-export interface LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats {
-  __typename: "LolChampionStats";
-  winRateHistory: LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats_winRateHistory[] | null;
-  pickRateHistory: LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats_pickRateHistory[] | null;
-  banRateHistory: LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats_banRateHistory[] | null;
+  stats: LolChampionTooltipDynamicQuery_lol_champion_stats | null;
 }
 
 export interface LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_countersOptions_options_counterMetrics {
@@ -69,7 +70,6 @@ export interface LolChampionTooltipDynamicQuery_lol_championsList_champions_role
 
 export interface LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion {
   __typename: "LolChampion";
-  stats: LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_stats | null;
   countersOptions: LolChampionTooltipDynamicQuery_lol_championsList_champions_roleData_champion_countersOptions | null;
 }
 
