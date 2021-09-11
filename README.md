@@ -48,7 +48,7 @@ Done! Here is a minimal code snippet
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-build-widget.png" align="right"
      alt="LoL Champion Build Widget" width="230" height="305">
      
-LoL Champion Build Widget displays the most popular champion build on automatically choosen or specified role.
+LoL Champion Build Widgets display the most popular champion build on automatically choosen or specified role.
 
 #### Host Node Settings
 
@@ -70,7 +70,7 @@ LoL Champion Build Widget displays the most popular champion build on automatica
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-build-compact-widget.png?1" align="right"
      alt="LoL Champion Build Compact Widget" width="230" height="143">
      
-LoL Champion Build Compact Widget displays the most popular champion build on automatically choosen or specified role in compact way.
+LoL Champion Build Compact Widgets display the most popular champion build on automatically chosen or specified role in a compact way.
 
 #### Host Node Settings
 
