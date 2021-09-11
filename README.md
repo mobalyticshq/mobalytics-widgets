@@ -92,7 +92,7 @@ LoL Champion Build Compact Widget displays the most popular champion build on au
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-tooltip-widget.png" align="right"
      alt="LoL Champion Tooltip Widget" width="230" height="143">
      
-LoL Champion Tooltip Widget uses links to mobalytics champion build page as a host node to show tooltip on hover over these links.
+LoL Champion Tooltip Widget uses links to Mobalytics champion build pages as a host node to show tooltip on hover over these links.
 
 #### Host Node Settings
 
