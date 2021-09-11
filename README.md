@@ -4,7 +4,7 @@
 
 # Mobalytics Widgets
 
-Mobalytics Widgets allows you to install a widget with data insights for one of the [supported games](https://app.mobalytics.gg/) to your website.
+Mobalytics Widgets allow you to install a widget with data insights for one of the [supported games](https://app.mobalytics.gg/) to your website.
 
 :star: Star us on GitHub — it motivates us a lot!
 
