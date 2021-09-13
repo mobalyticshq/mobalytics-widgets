@@ -4,7 +4,7 @@
 
 # Mobalytics Widgets
 
-Mobalytics Widgets allows you to install a widget with data insights for one of the [supported games](https://app.mobalytics.gg/) to your website.
+Mobalytics Widgets allow you to install useful widgets with data insights for [League of Legends](https://app.mobalytics.gg/) to your website.
 
 :star: Star us on GitHub — it motivates us a lot!
 
@@ -48,7 +48,7 @@ Done! Here is a minimal code snippet
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-build-widget.png" align="right"
      alt="LoL Champion Build Widget" width="230" height="305">
      
-LoL Champion Build Widget displays the most popular champion build on automatically choosen or specified role.
+LoL Champion Build Widgets display the most popular champion build on automatically choosen or specified role.
 
 #### Host Node Settings
 
@@ -70,7 +70,7 @@ LoL Champion Build Widget displays the most popular champion build on automatica
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-build-compact-widget.png?1" align="right"
      alt="LoL Champion Build Compact Widget" width="230" height="143">
      
-LoL Champion Build Compact Widget displays the most popular champion build on automatically choosen or specified role in compact way.
+LoL Champion Build Compact Widgets display the most popular champion build on automatically chosen or specified role in a compact way.
 
 #### Host Node Settings
 
@@ -92,7 +92,7 @@ LoL Champion Build Compact Widget displays the most popular champion build on au
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-tooltip-widget.png" align="right"
      alt="LoL Champion Tooltip Widget" width="230" height="143">
      
-LoL Champion Tooltip Widget uses links to mobalytics champion build page as a host node to show tooltip on hover over these links.
+LoL Champion Tooltip Widget uses links to Mobalytics champion build pages as a host node to show tooltip on hover over these links.
 
 #### Host Node Settings
 
@@ -110,7 +110,7 @@ LoL Champion Tooltip Widget uses links to mobalytics champion build page as a ho
 ## FAQ
 
 ### How to find champion slug to use in a widget?
-1. Open Mobalytics [champions page](https://app.mobalytics.gg/lol/champions)
+1. Open Mobalytics [Champions Page](https://app.mobalytics.gg/lol/champions)
 2. Navigate to specific champion page e.g "ahri"
 3. Copy champion slug from the page URL
   
