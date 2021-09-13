@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { Rolename, LolChampionBuildType, LolChampionBuildItemsListType, TierLevel } from "./globalTypes";
+import { Rolename, Region, LolChampionBuildType, LolChampionBuildItemsListType, TierLevel } from "./globalTypes";
 
 // ====================================================
 // GraphQL query operation: LolChampionWidgetDynamicQuery
@@ -73,4 +73,8 @@ export interface LolChampionWidgetDynamicQuery {
 export interface LolChampionWidgetDynamicQueryVariables {
   champion: string;
   role?: Rolename | null;
+  patch?: string | null;
+  region?: Region | null;
+  buildType?: LolChampionBuildType | null;
+  buildID?: number | null;
 }

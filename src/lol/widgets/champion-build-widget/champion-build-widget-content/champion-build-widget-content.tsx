@@ -5,14 +5,14 @@ import clsx from 'clsx';
 
 import { DYNAMIC_CHAMPION_BUILD_QUERY_GQL } from '../../../api/dynamic/queries/champion-build-query.gql';
 import { lolApi } from '../../../api/api';
-import { NNumber, Nullable } from '../../../../common/types/lang';
+import { NNumber, NString, Nullable } from '../../../../common/types/lang';
 import { ChampionBuildWidgetError } from '../champion-build-widget-error/champion-build-widget-error';
 import { ChampionBuildWidgetLoading } from '../champion-build-widget-loading/champion-build-widget-loading';
 import {
   LolChampionWidgetDynamicQuery,
   LolChampionWidgetDynamicQueryVariables,
 } from '../../../types/gql-dynamic/LolChampionWidgetDynamicQuery';
-import { Rolename } from '../../../types/gql-dynamic/globalTypes';
+import { LolChampionBuildType, Region, Rolename } from '../../../types/gql-dynamic/globalTypes';
 import {
   LolChampionWidgetStaticQuery,
   LolChampionWidgetStaticQueryVariables,
@@ -38,6 +38,10 @@ import { extractFromFlatList } from '../../../utils/squidex-data.utils';
 interface Props {
   champion: string;
   role: Nullable<Rolename>;
+  region: Nullable<Region>;
+  patch: NString;
+  buildType?: Nullable<LolChampionBuildType>;
+  buildID?: NNumber;
   compact: boolean;
   widgetWidth: NNumber;
   className?: string;
@@ -47,7 +51,7 @@ const MIN_WIDGET_WIDTH = 300;
 const SMALL_WIDGET_WIDTH = 560;
 
 export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
-  const { champion, role, compact, widgetWidth, className } = props;
+  const { champion, role, compact, widgetWidth, region, patch, buildID, className } = props;
 
   const isSmall = !!(widgetWidth && widgetWidth < SMALL_WIDGET_WIDTH);
   const isCompact = compact || isSmall;
@@ -59,7 +63,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   } = useQuery<LolChampionWidgetDynamicQuery, LolChampionWidgetDynamicQueryVariables>(
     DYNAMIC_CHAMPION_BUILD_QUERY_GQL,
     {
-      variables: { champion, role },
+      variables: { champion, role, region, patch, buildID },
       client: lolApi.dynamicDataClient,
     }
   );
@@ -72,6 +76,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
     variables: { filter: `data/slug/iv eq '${champion}'` },
     client: lolApi.staticDataClient,
   });
+
   const loading = dynamicLoading || staticLoading;
   const error = dynamicError || staticError;
 
@@ -105,7 +110,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   const gameItems =  extractFromFlatList([...(staticData.itemsChunk1 || []), ...(staticData.itemsChunk2 || [])])?.filter(it => !!it.riotId);
 
   // build props
-  const { spells, items, skillOrder: rawSkillOrder, skillMaxOrder: rawSkillMaxOrder, stats, patch, perks} = championBuild || {};
+  const { spells, items, skillOrder: rawSkillOrder, skillMaxOrder: rawSkillMaxOrder, stats, patch: buildPatch, perks} = championBuild || {};
 
   // stats props
   const { abilities: rawAbilities, name: championName } = championStats || {};
@@ -131,7 +136,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
         <BuildHeader
           championName={championName} championSlug={champion}
           roleName={roleName}
-          patch={patch}
+          patch={buildPatch}
           winRate={winRate}
           gamesCount={!isSmall ? stats?.matchCount : null}
         />

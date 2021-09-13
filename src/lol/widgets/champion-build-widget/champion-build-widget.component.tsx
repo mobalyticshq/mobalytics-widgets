@@ -3,35 +3,50 @@ import { css } from 'goober';
 import clsx from 'clsx';
 
 import { NNumber, NString } from '../../../common/types/lang';
-import { validateRolename } from '../../utils/validation';
+import { validateRegion, validateRolename } from '../../utils/validation';
 import { ChampionBuildWidgetError } from './champion-build-widget-error/champion-build-widget-error';
 import { ChampionBuildWidgetContent } from './champion-build-widget-content/champion-build-widget-content';
 import { GlobalStyle } from '../../ui/global.mixin';
 
 import { amumuCrying } from '../../utils/images';
 import { MOBA_APP_LINK } from '../../config';
+import { formatBuildType } from '../../utils/build-data-format.utils';
+import { validateStrEnumValue } from '../../../common/utils/lang';
+import { WidgetPropBuildType } from '../../types/widget-props';
 
 interface Props {
   champion: NString;
   role: NString;
+  region: NString;
+  patch: NString;
+  buildType: NString;
+  buildID: NString;
   widgetWidth: NNumber;
   isCompact?: boolean;
 }
 
 const ChampionBuildWidget: FunctionComponent<Props> = props => {
-  const { isCompact, champion, role, widgetWidth } = props;
+  const { isCompact, champion, role, widgetWidth, patch, region, buildType, buildID } = props;
   const validatedRole = validateRolename(role);
+  const validatedRegion = validateRegion(region);
+  const validatedBuildTypeProp = validateStrEnumValue<WidgetPropBuildType>(WidgetPropBuildType, buildType);
+  const validatedBuildType = validatedBuildTypeProp ?formatBuildType(validatedBuildTypeProp): null;
   const height = widgetWidth && getWidgetHeight(widgetWidth, !!isCompact);
+
   return (
     <div className={clsx(Wrapper(height ? `${height}px`: 'auto'), GlobalStyle)}>
       {champion && (!role || validatedRole) ? (
-      <ChampionBuildWidgetContent
-        champion={champion}
-        role={validatedRole}
-        compact={!!isCompact}
-        widgetWidth={widgetWidth}
-        className={clsx(Wrapper(height ? `${height}px`: 'auto'))}
-      />
+        <ChampionBuildWidgetContent
+          champion={champion}
+          role={validatedRole}
+          region={validatedRegion}
+          patch={patch}
+          buildType={validatedBuildType}
+          buildID={!!buildID ? parseInt(buildID): null}
+          compact={!!isCompact}
+          widgetWidth={widgetWidth}
+          className={clsx(Wrapper(height ? `${height}px`: 'auto'))}
+        />
       ) : (
         <ChampionBuildWidgetError
           imgSrc={amumuCrying()}

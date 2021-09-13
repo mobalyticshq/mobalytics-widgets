@@ -1,10 +1,16 @@
 import { gql } from '../../../../common/utils/graphql';
 
 export const DYNAMIC_CHAMPION_BUILD_QUERY_GQL = gql`
-  query LolChampionWidgetDynamicQuery($champion: String!, $role: Rolename) {
+  query LolChampionWidgetDynamicQuery(
+    $champion: String!
+    $role: Rolename
+    $patch: String
+    $region: Region
+    $buildID: Int
+  ) {
     lol {
-      champion(filters: {slug: $champion, role: $role}) {
-        build {
+      champion(filters: { slug: $champion, role: $role, patch: $patch, region: $region }) {
+        build(filters: { buildId: $buildID }) {
           type
           name
           patch

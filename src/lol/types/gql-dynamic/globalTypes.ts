@@ -37,6 +37,23 @@ export enum LolChampionELO {
   LOW = "LOW",
 }
 
+export enum Region {
+  ALL = "ALL",
+  BR = "BR",
+  EUNE = "EUNE",
+  EUW = "EUW",
+  JP = "JP",
+  KR = "KR",
+  LAN = "LAN",
+  LAS = "LAS",
+  NA = "NA",
+  OCE = "OCE",
+  PBE = "PBE",
+  RU = "RU",
+  TR = "TR",
+  UNKNOWN = "UNKNOWN",
+}
+
 export enum Rolename {
   ADC = "ADC",
   JUNGLE = "JUNGLE",

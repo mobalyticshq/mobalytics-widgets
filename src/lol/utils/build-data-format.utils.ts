@@ -1,16 +1,15 @@
 import { AbilityIndexToKey } from './abilities';
 import { validateStrEnumValue } from '../../common/utils/lang';
-import { LolChampionBuildItemsListType, SkillKey } from '../types/gql-dynamic/globalTypes';
+import { LolChampionBuildItemsListType, LolChampionBuildType, SkillKey } from '../types/gql-dynamic/globalTypes';
 import { filterNonNull } from '../../common/utils/list';
 import { LolChampionWidgetDynamicQuery_lol_champion_build_items } from '../types/gql-dynamic/LolChampionWidgetDynamicQuery';
 import { ItemsBuildT } from '../components/items-build/types';
-import {
-  LolChampionWidgetStaticQuery_champion_flatData_abilities,
-} from '../types/gql-static/LolChampionWidgetStaticQuery';
+import { LolChampionWidgetStaticQuery_champion_flatData_abilities } from '../types/gql-static/LolChampionWidgetStaticQuery';
 import { Ability } from '../components/champion-abilities-order/types';
 import { extractFromFlatList } from './squidex-data.utils';
 import { Nullable } from '../../common/types/lang';
 import { LolGameItemFragment } from '../types/gql-static/LolGameItemFragment';
+import { WidgetPropBuildType } from '../types/widget-props';
 
 export function formatItemsBuild(
   itemsBuild: LolChampionWidgetDynamicQuery_lol_champion_build_items[],
@@ -71,4 +70,15 @@ export function formatSkillMaxOrder(skillMaxOrder: number[]): SkillKey[] {
    return skillMaxOrder
      .map(it => validateStrEnumValue<SkillKey>(SkillKey, AbilityIndexToKey[it]))
      .filter(filterNonNull);
+}
+
+export function formatBuildType(type: WidgetPropBuildType): Nullable<LolChampionBuildType> {
+  switch (type) {
+    case WidgetPropBuildType['most-popular']:
+      return LolChampionBuildType.MOST_POPULAR;
+    case WidgetPropBuildType['highest-wr']:
+      return LolChampionBuildType.HIGHEST_WIN_RATE;
+    case WidgetPropBuildType['recommended']:
+      return LolChampionBuildType.RECOMMENDED
+  }
 }

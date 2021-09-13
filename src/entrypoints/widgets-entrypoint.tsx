@@ -13,6 +13,10 @@ interface Props {
   // lol champion widget props
   dataMobaChampion?: NString;
   dataMobaChampionRole?: NString;
+  dataMobaChampionRegion?: NString;
+  dataMobaChampionPatch?: NString;
+  dataMobaChampionBuildType?: NString;
+  dataMobaChampionBuildId?: NString;
   dataMobaWidth?: NNumber;
 }
 
@@ -23,7 +27,16 @@ const WidgetEntrypoint: FunctionComponent<Props> = props => {
     return null;
   }
 
-  const { dataMobaWidget, dataMobaChampion, dataMobaChampionRole, dataMobaWidth } = props;
+  const {
+    dataMobaWidget,
+    dataMobaChampion,
+    dataMobaChampionRole,
+    dataMobaWidth,
+    dataMobaChampionRegion,
+    dataMobaChampionPatch,
+    dataMobaChampionBuildType,
+    dataMobaChampionBuildId,
+  } = props;
 
   // render async widget base on widget type
   switch (dataMobaWidget) {
@@ -33,6 +46,10 @@ const WidgetEntrypoint: FunctionComponent<Props> = props => {
         <ChampionBuildWidget
           champion={dataMobaChampion}
           role={dataMobaChampionRole}
+          region={dataMobaChampionRegion}
+          patch={dataMobaChampionPatch}
+          buildType={dataMobaChampionBuildType}
+          buildID={dataMobaChampionBuildId}
           widgetWidth={dataMobaWidth}
           isCompact={dataMobaWidget === Widgets.LOL_CHAMPION_BUILD_COMPACT}
         />
