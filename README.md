@@ -19,7 +19,7 @@ Add Mobalytics Widgets script section right before closing `<body/>` tag
 
 #### Widget Host Node
   
-Add host node for the widget (LoL Amumu [Champion Build](#) example)
+Add host node for the widget (LoL Amumu [Champion Build](https://app.mobalytics.gg/lol/champions/amumu/build) example)
 ```
 <div data-moba-widget="lol-champion-build" data-moba-champion="amumu"></div>
 ```
