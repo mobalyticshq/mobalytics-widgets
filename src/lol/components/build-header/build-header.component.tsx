@@ -41,13 +41,12 @@ export const BuildHeader: FunctionComponent<Props> = props => {
           {patch && <Fragment>{` ${MiddleDot} `}{t('Patch')}<span>{patch}</span></Fragment>}
           {winRate && <Fragment>{` ${MiddleDot} `}{t('Win Rate')}<WinRate winRate={winRate}/></Fragment>}
           {gamesCount && <Fragment>based on <span>{formatNumber(gamesCount)}</span> matches</Fragment>}
-          {gamesCount && region && <Fragment>from <span>{region}</span> region</Fragment>}
+          {gamesCount && region && <Fragment> from <span>{region}</span> region</Fragment>}
         </div>
       </div>
     </div>
   );
 };
-
 
 const Wrapper = css`
   background: var(--moba-widget-bg-primary-dark);

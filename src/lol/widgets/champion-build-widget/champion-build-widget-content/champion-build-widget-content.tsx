@@ -134,10 +134,6 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
     region: region || undefined,
     patch: patch || undefined,
     buildID: id,
-    utm_medium: 'widget',
-    utm_source: 'champion_widget',
-    utm_campaign: window.location.host,
-    utm_content: 'build_link',
   });
 
   if(championName){

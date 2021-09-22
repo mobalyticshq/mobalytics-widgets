@@ -22,7 +22,7 @@ export const ChampionBuildWidgetLoading: FunctionComponent<Props> = props => {
   return (
     <div className={className}>
       <BuildHeaderSkeleton />
-      <div className={Content}>
+      <div className={Content(isSmall)}>
         <div className={clsx(Row, !isCompact && FlexEnd)}>
           <div className={clsx(isSmall && CompactRunesWrapper, Col)}>
             <div className={Title} />
@@ -67,9 +67,11 @@ export const ChampionBuildWidgetLoading: FunctionComponent<Props> = props => {
 };
 
 
-const Content = css`
+const Content = (isSmall: boolean) => css`
   width: 100%;
   overflow: hidden;
+
+  --moba-widget-col-h-p: ${isSmall ? '12px' : '20px'};
 `;
 
 const Title = css`
@@ -81,7 +83,7 @@ const Title = css`
 `;
 
 const Col = css`
-  padding: 20px;
+  padding: 20px var(--moba-widget-col-h-p);
   border-top: 1px solid var(--moba-widget-border-primary-light);
 
   &:first-child {
@@ -92,7 +94,7 @@ const Col = css`
 const Row = css`
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 20px;
+  padding: 10px var(--moba-widget-col-h-p);
 
   & > div {
     border: none;

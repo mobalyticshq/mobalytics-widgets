@@ -6,7 +6,6 @@ import { mobalyticsLogoSymbol } from '../../utils/images';
 
 import { MiddleDot } from '../../format/symbols';
 import { Text12x400Mixin, Text12x500Mixin } from '../../ui/typography';
-import { genPathQuery } from '../../utils/links';
 import { MOBA_HOME_URL, MOBA_WIDGET_REPO_URL } from '../../config';
 
 interface Props {
@@ -17,21 +16,20 @@ interface Props {
 
 export const WidgetFooter: FunctionComponent<Props> = props => {
   const { championName, buildUrl, isSmall } = props;
-  const mobaHomePageURL = genPathQuery(MOBA_HOME_URL, { utm_medium: 'widget', utm_source: 'champion_widget', utm_campaign: window.location.host, utm_content: 'logo' });
-  const widgetLPURL = genPathQuery(MOBA_WIDGET_REPO_URL, { utm_medium: 'widget', utm_source: 'champion_widget', utm_campaign: window.location.host, utm_content: 'widget_link' });
+
   return (
     <div className={clsx(Wrapper, isSmall && SmallWrapper)}>
       <div className={LinksWrapper}>
         <a href={buildUrl} target="_blank">See more {championName} builds</a>
         <span>{MiddleDot}</span>
-        <a href={widgetLPURL} target="_blank">Get this widget</a>
+        <a href={MOBA_WIDGET_REPO_URL} target="_blank">Get this widget</a>
       </div>
       <div className={LogoWrapper}>
         <span>Powered by</span>
-        <a href={mobaHomePageURL} target="_blank">
+        <a href={MOBA_HOME_URL} target="_blank">
           <img src={mobalyticsLogoSymbol()} alt="Mobalytics logo" loading="lazy"/>
         </a>
-        <a href={mobaHomePageURL} target="_blank">
+        <a href={MOBA_HOME_URL} target="_blank">
           <div className={Name}><span>MOB</span>ALYTICS.gg</div>
         </a>
       </div>
