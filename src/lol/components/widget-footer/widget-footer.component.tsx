@@ -17,8 +17,8 @@ interface Props {
 
 export const WidgetFooter: FunctionComponent<Props> = props => {
   const { championName, buildUrl, isSmall } = props;
-  const mobaHomePageURL = genPathQuery(MOBA_HOME_URL, { utm_medium: 'widget', utm_source: 'champion_widget', utm_campaign: window.location.host, utm_content: 'widget_link' });
-  const widgetLPURL = genPathQuery(MOBA_WIDGET_REPO_URL, { utm_medium: 'widget', utm_source: 'champion_widget', utm_campaign: window.location.host, utm_content: 'logo' });
+  const mobaHomePageURL = genPathQuery(MOBA_HOME_URL, { utm_medium: 'widget', utm_source: 'champion_widget', utm_campaign: window.location.host, utm_content: 'logo' });
+  const widgetLPURL = genPathQuery(MOBA_WIDGET_REPO_URL, { utm_medium: 'widget', utm_source: 'champion_widget', utm_campaign: window.location.host, utm_content: 'widget_link' });
   return (
     <div className={clsx(Wrapper, isSmall && SmallWrapper)}>
       <div className={LinksWrapper}>
