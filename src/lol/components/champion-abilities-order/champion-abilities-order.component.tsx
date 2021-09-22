@@ -76,7 +76,7 @@ const Col = css`
 
 const Index = css`
   ${Text12x700Mixin};
-  color: #6B6889!important;
+  color: var(--moba-widget-text-secondary)!important;
   cursor: default;
   height: 20px;
   margin-bottom: 2px;
@@ -93,7 +93,7 @@ const AbilityKeySymbol = css`
   width: 20px;
   height: 20px;
   border-radius: 3px;
-  background-color: rgba(76, 66, 120, 0.4);
+  background-color: var(--moba-widget-bg-primary-light);
   cursor: default;
 
   line-height: 20px!important;
@@ -107,9 +107,10 @@ const AbilityKeySymbol = css`
     content: '';
     width: 1px;
     height: 200px;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--moba-widget-border-primary-light);
     position: absolute;
     bottom: calc(100% + 4px);
     left: 50%;
+    opacity: 0.5;
   }
 `;

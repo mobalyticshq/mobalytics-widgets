@@ -5,6 +5,7 @@ import { useTooltipHook } from '../../../common/components/tooltip-hook/tooltip-
 import { ChampionTooltipWidgetContent } from './champion-tooltip-widget-content/champion-tooltip-widget-content.component';
 import { extractChampionNameFromUrl } from './champion-tooltip-widget.utils';
 import { GlobalStyle } from '../../ui/global.mixin';
+import { DefaultTheme } from '../../ui/themes';
 
 interface Props {
   hostElement: Element;
@@ -46,7 +47,7 @@ const ChampionTooltipWidget: FunctionComponent<Props> = props => {
         ref={contentRef}
         championSlug={champion}
         onDataLoaded={dataLoadedHandler}
-        className={clsx(GlobalStyle, contentClass)}
+        className={clsx(GlobalStyle, contentClass, DefaultTheme)}
       />
     );
   }

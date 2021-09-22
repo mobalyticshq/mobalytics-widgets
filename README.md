@@ -11,21 +11,21 @@ Mobalytics Widgets allow you to install useful widgets with data insights for [L
 ## Getting Started
 
 #### Installation
-  
+
 Add Mobalytics Widgets script section right before closing `<body/>` tag
 ```
 <script async src="https://cdn.jsdelivr.net/gh/mobalyticshq/mobalytics-widgets/build/mobalytics-widgets.js"></script>
 ```
 
 #### Widget Host Node
-  
+
 Add host node for the widget (LoL Amumu [Champion Build](#) example)
 ```
 <div data-moba-widget="lol-champion-build" data-moba-champion="amumu"></div>
 ```
 
 #### Result
-  
+
 Done! Here is a minimal code snippet
 ```
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ Done! Here is a minimal code snippet
 
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-build-widget.png" align="right"
      alt="LoL Champion Build Widget" width="230" height="305">
-     
+
 LoL Champion Build Widgets display the most popular champion build on automatically choosen or specified role.
 
 #### Host Node Settings
@@ -56,7 +56,7 @@ LoL Champion Build Widgets display the most popular champion build on automatica
 | --- | --- |
 | `data-moba-widget` | Widget ID `lol-champion-build` |
 | `data-moba-champion` | Slug of the champion, follow [instructions](#)<br/>to see full slugs list. |
-| `data-moba-champion-role` | Role of the champion, possible values are<br/>`adc`, `jungle`, `mid`, `support`, `top`. |
+| `data-moba-champion-role` | Role of the champion, possible values are<br/>`ADC`, `JUNGLE`, `MID`, `SUPPORT`, `TOP`. |
 
 **Example**
 ```
@@ -69,7 +69,7 @@ LoL Champion Build Widgets display the most popular champion build on automatica
 
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-build-compact-widget.png?1" align="right"
      alt="LoL Champion Build Compact Widget" width="230" height="143">
-     
+
 LoL Champion Build Compact Widgets display the most popular champion build on automatically chosen or specified role in a compact way.
 
 #### Host Node Settings
@@ -78,7 +78,7 @@ LoL Champion Build Compact Widgets display the most popular champion build on au
 | --- | --- |
 | `data-moba-widget` | Widget ID `lol-champion-build-compact` |
 | `data-moba-champion` | Slug of the champion, follow [instructions](#)<br/>to see full slugs list. |
-| `data-moba-champion-role` | Role of the champion, possible values are<br/>`adc`, `jungle`, `mid`, `support`, `top`. |
+| `data-moba-champion-role` | Role of the champion, possible values are<br/>`ADC`, `JUNGLE`, `MID`, `SUPPORT`, `TOP`. |
 
 **Example**
 ```
@@ -91,7 +91,7 @@ LoL Champion Build Compact Widgets display the most popular champion build on au
 
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-lol-champion-tooltip-widget.png" align="right"
      alt="LoL Champion Tooltip Widget" width="230" height="143">
-     
+
 LoL Champion Tooltip Widget uses links to Mobalytics champion build pages as a host node to show tooltip on hover over these links.
 
 #### Host Node Settings
@@ -113,7 +113,7 @@ LoL Champion Tooltip Widget uses links to Mobalytics champion build pages as a h
 1. Open Mobalytics [Champions Page](https://app.mobalytics.gg/lol/champions)
 2. Navigate to specific champion page e.g "ahri"
 3. Copy champion slug from the page URL
-  
+
 <img src="https://cdn.mobalytics.gg/assets/common/images/mobalytics-widgets-repo/readme-how-to-find-lol-champion-slug.jpg"
      alt="How to find LoL Champion Slug"  height="200">
 

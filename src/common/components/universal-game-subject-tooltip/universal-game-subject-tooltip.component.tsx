@@ -17,7 +17,7 @@ interface Props {
 export const UniversalGameSubjectTooltip: FunctionComponent<Props> = props => {
   const { iconUrl, name, description, className } = props;
   return (
-    <div className={clsx(ItemWrapper,className)}>
+    <div className={clsx(Wrapper,className)}>
       <div className={ItemHeader}>
         {name && iconUrl ? <img className={ItemHeaderIcon} src={iconUrl} alt={name} /> : null}
         {name && <div className={ItemTitle}>{name}</div>}
@@ -27,10 +27,10 @@ export const UniversalGameSubjectTooltip: FunctionComponent<Props> = props => {
   );
 };
 
-const ItemWrapper = css`
+const Wrapper = css`
   padding: 10px;
-  background: #1a1338;
-  border: 1px solid #2f2650;
+  background: var(--moba-widget-tooltip-bg);
+  border: 1px solid var(--moba-widget-tooltip-border);
   border-radius: 5px;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
   line-height: 20px!important;
@@ -54,7 +54,7 @@ const ItemHeaderIcon = css`
 
 const ItemTitle = css`
   ${Text18x400Mixin};
-  color: #f2bf43!important;
+  color: var(--moba-widget-link-primary)!important;
   margin-bottom: 5px;
   margin-left: 8px;
   margin-right: 8px;

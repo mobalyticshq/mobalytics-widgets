@@ -1,9 +1,13 @@
+import clsx from 'clsx';
 import { css } from 'goober';
 import { VNode } from 'preact';
 import { createPortal } from 'preact/compat';
+import { useCallback, useContext, useEffect, useRef, useState } from 'preact/hooks';
 import tippy, { Instance as TippyInstance, hideAll } from 'tippy.js';
-import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
+
 import { TooltipHookPayload, TooltipHookProps } from './tooltip-hook.types';
+import { DefaultTheme } from '../../../lol/ui/themes';
+import { WidgetThemeTheme } from '../../../lol/components/theme-provider/theme-provider';
 
 function mountTooltip(vnode: VNode): VNode {
   return createPortal(vnode, document.body);
@@ -22,6 +26,7 @@ export function useTooltipHook<TriggerElement extends Element = Element, PortalE
   const contentRef = useRef<PortalElement | null>(null);
   const tippyRef = useRef<TippyInstance>();
   const propsRef = useRef<TooltipHookProps | undefined>(props);
+  const themeClassName = useContext(WidgetThemeTheme);
 
   const triggerHandler = useCallback((e: Event) => {
     if (!triggerElementRef.current) {
@@ -61,7 +66,7 @@ export function useTooltipHook<TriggerElement extends Element = Element, PortalE
     contentRef,
     triggerHandler,
     dataLoadedHandler,
-    contentClass,
+    contentClass: clsx(contentClass, DefaultTheme, themeClassName),
     mountTooltip: triggerElementRef.current ? mountTooltip : null,
   };
 }

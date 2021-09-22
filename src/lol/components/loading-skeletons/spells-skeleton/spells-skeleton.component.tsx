@@ -25,7 +25,7 @@ const Icon = css`
   width: 36px;
   height: 36px;
   display: block;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 2px;
   margin: 0 8px 0 0;
 `;

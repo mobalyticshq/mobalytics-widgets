@@ -3,31 +3,34 @@ import { FunctionComponent, h, Fragment } from 'preact';
 import { t } from '../../../common/i18n/i18n';
 import { css } from 'goober';
 import { championImage, roleNameIcon } from '../../utils/images';
-import { Rolename } from '../../types/gql-dynamic/globalTypes';
+import { Region, Rolename } from '../../types/gql-dynamic/globalTypes';
 import { NNumber, NString, Nullable } from '../../../common/types/lang';
 import { formatRoleName } from '../../format/texts';
 import { MiddleDot } from '../../format/symbols';
 import { WinRate } from '../metrics/win-rate/win-rate.component';
 import { Text12x400Mixin, Text12x500Mixin } from '../../ui/typography';
+import { formatNumber } from '../../../common/format/number';
 
 interface Props {
   championName: string;
   championSlug: string;
+  buildName: string;
   roleName: Nullable<Rolename>;
   patch: NString;
   winRate: NNumber;
   gamesCount: NNumber;
+  region?: Nullable<Region>;
 }
 
 export const BuildHeader: FunctionComponent<Props> = props => {
   const { championName, championSlug } = props;
-  const { roleName, patch, winRate, gamesCount } = props;
+  const { buildName, roleName, patch, winRate, gamesCount, region } = props;
 
   return (
     <div className={Wrapper}>
       <img src={championImage(championSlug)} alt={championName} className={ChampionImage} />
       <div>
-        <div className={Title}>{championName} build</div>
+        <div className={Title}>{buildName}</div>
         <div className={Text}>
           {roleName && (
             <Fragment>
@@ -37,7 +40,8 @@ export const BuildHeader: FunctionComponent<Props> = props => {
           )}
           {patch && <Fragment>{` ${MiddleDot} `}{t('Patch')}<span>{patch}</span></Fragment>}
           {winRate && <Fragment>{` ${MiddleDot} `}{t('Win Rate')}<WinRate winRate={winRate}/></Fragment>}
-          {gamesCount && <Fragment>based on <span>{gamesCount}</span> matches</Fragment>}
+          {gamesCount && <Fragment>based on <span>{formatNumber(gamesCount)}</span> matches</Fragment>}
+          {gamesCount && region && <Fragment>from <span>{region}</span> region</Fragment>}
         </div>
       </div>
     </div>
@@ -46,9 +50,9 @@ export const BuildHeader: FunctionComponent<Props> = props => {
 
 
 const Wrapper = css`
-  background: #252046;
+  background: var(--moba-widget-bg-primary-dark);
   border-radius: 5px 5px 0 0;
-  border: 1px solid #3c2d69;
+  border-bottom: 1px solid var(--moba-widget-border-primary-light);
   height: 60px;
   padding: 10px 12px;
   display: flex;
@@ -57,7 +61,7 @@ const Wrapper = css`
 
 const Title = css`
   ${Text12x500Mixin};
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
   text-transform: uppercase;
 `;
 
@@ -65,7 +69,7 @@ const ChampionImage = css`
   display: block;
   width: 36px;
   height: 36px;
-  border: 2px solid #F2BF43;
+  border: 2px solid var(--moba-widget-border-secondary-light);
   border-radius: 50%;
   margin-right: 8px;
 `;
@@ -81,14 +85,14 @@ const RoleIconCss = css`
 
 const Text = css`
   ${Text12x400Mixin};
-  color: #6B6889!important;
+  color: var(--moba-widget-text-secondary)!important;
   min-width: 300px;
   display: flex;
   align-items: center;
 
   span{
     font-weight: 500;
-    color: #fff!important;
+    color: var(--moba-widget-text-primary-light);
     margin: 0 3px;
   }
 `;

@@ -44,7 +44,7 @@ export const ChampionBuildWidgetLoading: FunctionComponent<Props> = props => {
           {!isCompact && (
             <div>
               <div className={Title} />
-              <ChampionAbilitiesOrderSkeleton/>
+              <ChampionAbilitiesOrderSkeleton className={ChampionAbilitiesOrder}/>
             </div>
           )}
           {isCompact && (
@@ -75,14 +75,14 @@ const Content = css`
 const Title = css`
   height: 10px;
   width: 90px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 1px;
   margin: 3px 0 10px 0;
 `;
 
 const Col = css`
   padding: 20px;
-  border-top: 1px solid #3c2d69;
+  border-top: 1px solid var(--moba-widget-border-primary-light);
 
   &:first-child {
     border: none;
@@ -120,4 +120,8 @@ const AbilitiesOrder = css`
 const SkillOrderRow = css`
   display: flex;
   flex-wrap: wrap;
+`;
+
+const ChampionAbilitiesOrder = css`
+  margin-top: 20px;
 `;

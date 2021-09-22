@@ -1,4 +1,4 @@
-import { FunctionComponent, h} from 'preact';
+import { FunctionComponent, h } from 'preact';
 import { css } from 'goober';
 import clsx from 'clsx';
 import { Text10x400Mixin } from '../../../ui/typography';
@@ -30,7 +30,7 @@ const Separator = css`
   ${Text10x400Mixin};
   display: flex;
   margin: 0 6px;
-  color: #3C385C!important;
+  color: var(--moba-widget-skeleton-primary)!important;
 `;
 
 const SkullWrapper = css`
@@ -40,5 +40,5 @@ const SkullWrapper = css`
   overflow: hidden;
   position: relative;
   display: block;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
 `;

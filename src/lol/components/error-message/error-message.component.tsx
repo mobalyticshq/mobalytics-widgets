@@ -43,27 +43,27 @@ const Img = css`
 const Title = css`
   ${Text16x500Mixin};
   text-align: center;
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
   margin: 4px 0 8px 0;
 `;
 
 const Text = css`
   ${Text14x400Mixin};
   text-align: center;
-  color: #B3B4D0;
+  color: var(--moba-widget-text-primary-dark)!important;
   margin: 0;
 `;
 
 const Link = css`
   ${Text14x500Mixin};
   text-align: center;
-  color: #f2bf43!important;
+  color: var(--moba-widget-link-primary)!important;
   margin: 20px 0 0 0;
 
   transition: color ease .2s;
 
   &:focus,
   &:hover{
-    color: #38C6F4!important;
+    color: var(--moba-widget-link-hover)!important;
   }
 `;

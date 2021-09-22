@@ -28,7 +28,6 @@ export interface LolChampionWidgetStaticQuery_champion_flatData_abilities {
 
 export interface LolChampionWidgetStaticQuery_champion_flatData {
   __typename: "ChampionsV1DataFlatDto";
-  slug: string | null;
   name: string | null;
   abilities: LolChampionWidgetStaticQuery_champion_flatData_abilities[] | null;
 }

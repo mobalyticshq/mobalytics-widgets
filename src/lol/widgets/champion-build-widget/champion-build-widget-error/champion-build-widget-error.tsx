@@ -37,7 +37,7 @@ const Wrapper = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #2d2652!important;
+  background-color: var(--moba-widget-bg-primary-dark)!important;
   border-radius: 5px;
   padding: 20px;
 `;

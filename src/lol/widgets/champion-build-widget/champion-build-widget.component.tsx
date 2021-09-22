@@ -6,13 +6,11 @@ import { NNumber, NString } from '../../../common/types/lang';
 import { validateRegion, validateRolename } from '../../utils/validation';
 import { ChampionBuildWidgetError } from './champion-build-widget-error/champion-build-widget-error';
 import { ChampionBuildWidgetContent } from './champion-build-widget-content/champion-build-widget-content';
-import { GlobalStyle } from '../../ui/global.mixin';
 
 import { amumuCrying } from '../../utils/images';
 import { MOBA_APP_LINK } from '../../config';
 import { formatBuildType } from '../../utils/build-data-format.utils';
-import { validateStrEnumValue } from '../../../common/utils/lang';
-import { WidgetPropBuildType } from '../../types/widget-props';
+import { WidgetThemeProvider } from '../../components/theme-provider/theme-provider';
 
 interface Props {
   champion: NString;
@@ -29,12 +27,11 @@ const ChampionBuildWidget: FunctionComponent<Props> = props => {
   const { isCompact, champion, role, widgetWidth, patch, region, buildType, buildID } = props;
   const validatedRole = validateRolename(role);
   const validatedRegion = validateRegion(region);
-  const validatedBuildTypeProp = validateStrEnumValue<WidgetPropBuildType>(WidgetPropBuildType, buildType);
-  const validatedBuildType = validatedBuildTypeProp ?formatBuildType(validatedBuildTypeProp): null;
+  const validatedBuildType = buildType ? formatBuildType(buildType) : null;
   const height = widgetWidth && getWidgetHeight(widgetWidth, !!isCompact);
 
   return (
-    <div className={clsx(Wrapper(height ? `${height}px`: 'auto'), GlobalStyle)}>
+    <WidgetThemeProvider>
       {champion && (!role || validatedRole) ? (
         <ChampionBuildWidgetContent
           champion={champion}
@@ -59,7 +56,7 @@ const ChampionBuildWidget: FunctionComponent<Props> = props => {
           className={clsx(Wrapper(height ? `${height}px`: 'auto'))}
         />
       )}
-    </div>
+    </WidgetThemeProvider>
   );
 };
 
@@ -68,7 +65,7 @@ function getWidgetHeight (widgetWidth: number, isCompact: boolean): NNumber {
   if(widgetWidth >= 600) return isCompact ? 616 : 862;
   if(widgetWidth >= 560) return isCompact ? 616 : 862;
   if(widgetWidth >= 300) return isCompact ? 682 : 682;
-  return null
+  return null;
 }
 
 const Wrapper = (height: string) => css`

@@ -118,7 +118,7 @@ const Content = css`
 
 const Col = css`
   padding: 20px;
-  border-top: 1px solid #3c2d69;
+  border-top: 1px solid var(--moba-widget-border-primary-light);
 
   &:first-child {
     border: none;
@@ -151,7 +151,7 @@ const CompactRunesWrapper = css`
 
 const Title = css`
   ${Text12x500Mixin};
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
   text-transform: uppercase;
   margin: 0 8px 8px 0;
 `;

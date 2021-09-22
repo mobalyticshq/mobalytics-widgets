@@ -7,15 +7,21 @@ export const DYNAMIC_CHAMPION_BUILD_QUERY_GQL = gql`
     $patch: String
     $region: Region
     $buildID: Int
+    $buildType: LolChampionBuildType
   ) {
     lol {
       champion(filters: { slug: $champion, role: $role, patch: $patch, region: $region }) {
-        build(filters: { buildId: $buildID }) {
+        build(filters: { buildId: $buildID, type: $buildType }) {
+          id
           type
           name
-          patch
           role
+          patch
           championSlug
+          vsChampionSlug
+          proPlayer {
+            name
+          }
           spells
           skillOrder
           skillMaxOrder

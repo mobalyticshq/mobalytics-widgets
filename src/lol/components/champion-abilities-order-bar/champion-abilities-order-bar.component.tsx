@@ -31,7 +31,7 @@ export const ChampionAbilitiesOrderBar: FunctionComponent<Props> = props => {
   ${Text10x400Mixin};
   display: flex;
   align-items: center;
-  color: #8890b5!important;
+  color: var(--moba-widget-text-primary-dark)!important;
   height: 14px;
 `;
 

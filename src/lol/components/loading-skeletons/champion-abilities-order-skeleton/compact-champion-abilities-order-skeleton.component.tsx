@@ -1,4 +1,4 @@
-import { FunctionComponent, h} from 'preact';
+import { FunctionComponent, h } from 'preact';
 import { css } from 'goober';
 import clsx from 'clsx';
 
@@ -49,13 +49,13 @@ const AbilityKeySymbol = css`
   width: 20px;
   height: 20px;
   border-radius: 3px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   cursor: default;
   position: relative;
 `;
 
 const Index = css`
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   height: 20px;
   margin-bottom: 4px;
 `;

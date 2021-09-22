@@ -59,7 +59,7 @@ const PerksIcon = css`
   display: block;
   width: 38px;
   height: 38px;
-  border: 0 solid #F2BF43;
+  border: 0 solid var(--moba-widget-border-secondary-light);
   border-radius: 50%;
 
   opacity: 0.5;

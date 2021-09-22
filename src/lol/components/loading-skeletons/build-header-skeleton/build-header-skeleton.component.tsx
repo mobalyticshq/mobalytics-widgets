@@ -14,9 +14,9 @@ export const BuildHeaderSkeleton: FunctionComponent = () => {
 };
 
 const Wrapper = css`
-  background: #252046;
+  background: var(--moba-widget-bg-primary-dark);
   border-radius: 5px 5px 0 0;
-  border: 1px solid #3c2d69;
+  border-bottom: 1px solid var(--moba-widget-border-primary-light);
   height: 60px;
   padding: 10px 12px;
   display: flex;
@@ -27,7 +27,7 @@ const ChampionImage = css`
   display: block;
   width: 36px;
   height: 36px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 50%;
   margin-right: 8px;
 `;
@@ -35,7 +35,7 @@ const ChampionImage = css`
 const Title = css`
   height: 10px;
   width: 90px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 1px;
   margin-bottom: 12px;
 `;
@@ -43,6 +43,6 @@ const Title = css`
 const Text = css`
   height: 10px;
   width: 190px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 1px;
 `;

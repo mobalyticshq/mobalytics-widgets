@@ -6,7 +6,6 @@ export const STATIC_CHAMPION_BUILD_QUERY_GQL = gql`
     champion: queryChampionsV1Contents(filter: $filter) {
       id
       flatData {
-        slug
         name
         abilities {
           id

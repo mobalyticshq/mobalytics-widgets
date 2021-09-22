@@ -9,6 +9,11 @@ import { Rolename, Region, LolChampionBuildType, LolChampionBuildItemsListType, 
 // GraphQL query operation: LolChampionWidgetDynamicQuery
 // ====================================================
 
+export interface LolChampionWidgetDynamicQuery_lol_champion_build_proPlayer {
+  __typename: "LolProPlayer";
+  name: string | null;
+}
+
 export interface LolChampionWidgetDynamicQuery_lol_champion_build_items {
   __typename: "LolChampionBuildItemsList";
   type: LolChampionBuildItemsListType | null;
@@ -30,11 +35,14 @@ export interface LolChampionWidgetDynamicQuery_lol_champion_build_stats {
 
 export interface LolChampionWidgetDynamicQuery_lol_champion_build {
   __typename: "LolChampionBuild";
+  id: string;
   type: LolChampionBuildType;
   name: string | null;
-  patch: string | null;
   role: Rolename | null;
+  patch: string | null;
   championSlug: string;
+  vsChampionSlug: string | null;
+  proPlayer: LolChampionWidgetDynamicQuery_lol_champion_build_proPlayer | null;
   spells: number[] | null;
   skillOrder: number[] | null;
   skillMaxOrder: number[] | null;
@@ -75,6 +83,6 @@ export interface LolChampionWidgetDynamicQueryVariables {
   role?: Rolename | null;
   patch?: string | null;
   region?: Region | null;
-  buildType?: LolChampionBuildType | null;
   buildID?: number | null;
+  buildType?: LolChampionBuildType | null;
 }

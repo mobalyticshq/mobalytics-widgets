@@ -165,7 +165,7 @@ const SkillIcon = css`
   width: 24px;
   height: 24px;
   margin-top: 8px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
 `;
 
 const SkillsOrderWrapper = css`
@@ -181,7 +181,7 @@ const Col = css`
 `;
 
 const Index = css`
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 1px;
   cursor: default;
   height: 20px;
@@ -199,7 +199,7 @@ const AbilityKeySymbol = css`
   width: 20px;
   height: 20px;
   border-radius: 3px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   position: relative;
   transform: translate(0, 8px);
 

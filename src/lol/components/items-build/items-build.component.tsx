@@ -39,7 +39,7 @@ const Row = css`
 
 const Label = css`
   ${Text12x500Mixin};
-  color: #6B6889!important;
+  color: var(--moba-widget-text-secondary)!important;
   margin-bottom: 4px;
   padding: 0;
   margin-top: 12px;

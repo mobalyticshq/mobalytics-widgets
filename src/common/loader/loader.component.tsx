@@ -39,7 +39,7 @@ const Wrapper = css`
 `;
 
 const Dot = css`
-  background-color: #8991b6!important;
+  background-color: var(--moba-widget-bg-primary-light)!important;
   border-radius: 100%;
   display: inline-block;
   height: 15px;

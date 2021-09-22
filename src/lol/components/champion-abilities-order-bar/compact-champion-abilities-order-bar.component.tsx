@@ -35,7 +35,7 @@ const Wrapper = css`
   ${Text10x400Mixin};
   display: flex;
   align-items: center;
-  color: #8890b5!important;
+  color: var(--moba-widget-text-primary-dark)!important;
 `;
 
 const AbilityKey = css`
@@ -53,7 +53,7 @@ const AbilityKey = css`
   display: block;
   width: 16px;
   height: 16px;
-  background: #4C4278;
+  background: var(--moba-widget-bg-primary-light);
   border-radius: 4px;
 `;
 

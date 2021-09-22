@@ -32,9 +32,9 @@ export const BuildFooterSkeleton: FunctionComponent<Props> = props => {
 };
 
 const Wrapper = css`
-  background: #252046;
+  background: var(--moba-widget-bg-primary-dark);
   border-radius: 0 0 5px 5px;
-  border: 1px solid #3c2d69;
+  border-top: 1px solid var(--moba-widget-border-primary-light);
   min-height: 50px;
   padding: 0 12px;
   display: flex;
@@ -62,7 +62,7 @@ const LinksWrapper = css`
     width: 130px;
     height: 10px;
     margin-right: 12px;
-    background: #3C385C;
+    background: var(--moba-widget-skeleton-primary);
     border-radius: 1px;
 
     &:last-child{
@@ -76,7 +76,7 @@ const LogoWrapper = css`
   ${Text12x500Mixin};
   line-height: 20px!important;
   height: 50px;
-  color: #6B6889!important;
+  color: var(--moba-widget-text-secondary)!important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@ const LogoWrapper = css`
 const Name = css`
   ${Text12x400Mixin};
   line-height: 20px!important;
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
 
   span{
     font-weight: 700;

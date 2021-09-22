@@ -98,7 +98,7 @@ const PerksIcon = css`
   width: 24px;
   height: 24px;
   margin: 0 8px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 50%;
 `;
 
@@ -125,7 +125,7 @@ const Header = css`
 const Name = css`
   width: 70px;
   height: 12px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   text-transform: capitalize;
   margin-left: 8px;
 `;
@@ -151,13 +151,13 @@ const KeystoneRow = css`
 const RuneRound = css`
   width: 36px;
   height: 36px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 50%;
 `;
 
 const KeystoneRound = css`
   width: 48px;
   height: 48px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 50%;
 `;

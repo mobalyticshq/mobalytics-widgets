@@ -46,7 +46,7 @@ const Icon = css`
   width: 36px;
   height: 36px;
   display: block;
-  border: 1px solid #372B60;
+  border: 1px solid var(--moba-widget-border-primary-light);
   border-radius: 2px;
   cursor: help;
 `;

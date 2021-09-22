@@ -52,7 +52,7 @@ const Row = css`
   }
 
   & > div{
-    background: #3C385C;
+    background: var(--moba-widget-skeleton-primary);
     border-radius: 50%;
     margin-left: 16px;
 

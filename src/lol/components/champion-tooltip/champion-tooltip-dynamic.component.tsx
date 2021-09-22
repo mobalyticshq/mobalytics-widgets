@@ -87,7 +87,7 @@ const MetricsWrapper = css`
 
 const RoundedIcon = css`
   display: block;
-  border: 2px solid #F2BF43;
+  border: 2px solid var(--moba-widget-border-secondary-light);
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -99,7 +99,7 @@ const Row = css`
 
 const Title = css`
   ${Text12x400Mixin};
-  color: #6B6889!important;
+  color: var(--moba-widget-text-secondary)!important;
   margin-top: 8px;
   margin-bottom: 8px;
 `;

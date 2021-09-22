@@ -1,6 +1,6 @@
 {
   "name": "mobalytics-widgets",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
@@ -37,6 +37,7 @@
     "preact": "^10.3.4",
     "preact-compat": "^3.19.0",
     "preact-markdown": "^2.0.0",
+    "query-string": "^7.0.1",
     "subscriptions-transport-ws": "^0.9.19",
     "tippy.js": "^6.3.1"
   },

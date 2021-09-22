@@ -3,8 +3,6 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-type GqlTagsScalar = string[] | null;
-
 // ====================================================
 // GraphQL query operation: LolChampionAbilityBySlug
 // ====================================================

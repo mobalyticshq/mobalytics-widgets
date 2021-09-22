@@ -53,7 +53,7 @@ const MetricMeta = css`
 
 const Title = css`
   ${Text12x400Mixin};
-  color: #6B6889!important;
+  color: var(--moba-widget-text-secondary)!important;
   letter-spacing: 0.25px;
   margin: 0;
   padding: 0;
@@ -63,14 +63,14 @@ const Value = css`
   ${Text20x400Mixin};
   font-family: Oswald, sans-serif!important;
   line-height: 32px!important;
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
   margin: 0;
   padding: 0;
 `;
 
 const Symbol = css`
   ${Text12x400Mixin};
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
   line-height: 1!important;
   text-align: center;
   margin: 0;

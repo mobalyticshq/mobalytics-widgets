@@ -9,7 +9,6 @@ import { Ability } from '../components/champion-abilities-order/types';
 import { extractFromFlatList } from './squidex-data.utils';
 import { Nullable } from '../../common/types/lang';
 import { LolGameItemFragment } from '../types/gql-static/LolGameItemFragment';
-import { WidgetPropBuildType } from '../types/widget-props';
 
 export function formatItemsBuild(
   itemsBuild: LolChampionWidgetDynamicQuery_lol_champion_build_items[],
@@ -72,13 +71,13 @@ export function formatSkillMaxOrder(skillMaxOrder: number[]): SkillKey[] {
      .filter(filterNonNull);
 }
 
-export function formatBuildType(type: WidgetPropBuildType): Nullable<LolChampionBuildType> {
+export function formatBuildType(type: string): Nullable<LolChampionBuildType> {
   switch (type) {
-    case WidgetPropBuildType['most-popular']:
+    case 'most-popular':
       return LolChampionBuildType.MOST_POPULAR;
-    case WidgetPropBuildType['highest-wr']:
+    case 'highest-wr':
       return LolChampionBuildType.HIGHEST_WIN_RATE;
-    case WidgetPropBuildType['recommended']:
+    case 'recommended':
       return LolChampionBuildType.RECOMMENDED
   }
 }

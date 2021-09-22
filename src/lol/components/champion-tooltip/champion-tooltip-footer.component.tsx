@@ -33,22 +33,22 @@ export const ChampionTooltipFooter: FunctionComponent<Props> = props => {
 
 const Wrapper = css`
   ${Text12x500Mixin};
-  color: #aaabca!important;
+  color: var(--moba-widget-text-secondary)!important;
   height: 34px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #252046;
+  background: var(--moba-widget-bg-primary-dark);
 
   a {
     display: block;
     margin: 0 8px;
-    color: #f2bf43!important;
+    color: var(--moba-widget-link-primary)!important;
 
     &:focus,
     &:hover {
-      color: #38C6F4!important;
+      color: var(--moba-widget-link-hover)!important;
     }
   }
 `;

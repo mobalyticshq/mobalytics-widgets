@@ -57,8 +57,8 @@ export const ChampionTooltip: FunctionComponent<Props> = props => {
 
 const Wrapper = css`
   width: 420px;
-  background: #151136;
-  border: 1px solid #382f66;
+  background: var(--moba-widget-bg-secondary-dark);
+  border: 1px solid var(--moba-widget-border-primary-light);
   box-shadow: 0 4px 20px rgba(29, 21, 70, 0.8);
   border-radius: 6px;
   overflow: hidden;

@@ -47,7 +47,7 @@ const AbilityKeySymbol = css`
   width: 20px;
   height: 20px;
   border-radius: 3px;
-  background-color: rgba(76, 66, 120, 0.4);
+  background-color: var(--moba-widget-bg-primary-light);
   cursor: default;
 
   line-height: 20px!important;
@@ -58,7 +58,7 @@ const AbilityKeySymbol = css`
 
 const Index = css`
   ${Text12x700Mixin};
-  color: #6B6889!important;
+  color: var(--moba-widget-text-secondary)!important;
   text-align: center;
   height: 20px;
   margin-bottom: 2px;

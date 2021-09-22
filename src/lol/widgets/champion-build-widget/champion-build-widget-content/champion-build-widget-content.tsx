@@ -1,4 +1,4 @@
-import { FunctionComponent, h} from 'preact';
+import { FunctionComponent, h } from 'preact';
 import { useQuery } from 'graphql-hooks';
 import { css } from 'goober';
 import clsx from 'clsx';
@@ -20,20 +20,22 @@ import {
 import { STATIC_CHAMPION_BUILD_QUERY_GQL } from '../../../api/static/queries/champion-build-query.gql';
 import { firstItem } from '../../../../common/utils/list';
 import { calcWinRate } from '../../../../common/utils/math';
-import { validateStrEnumValue } from '../../../../common/utils/lang';
 import { BuildHeader } from '../../../components/build-header/build-header.component';
-import { amumuCrying, championPosterImage, emoteImage } from '../../../utils/images';
+import { amumuCrying, championSmallPosterImage, emoteImage } from '../../../utils/images';
 import { WidgetFooter } from '../../../components/widget-footer/widget-footer.component';
 import {
   formatAbilities,
   formatAbilityOrder,
-  formatItemsBuild, formatSkillMaxOrder,
+  formatItemsBuild,
+  formatSkillMaxOrder,
   formatSkillOrder,
 } from '../../../utils/build-data-format.utils';
 import { ChampionBuildWidgetBody } from '../champion-build-widget-body/champion-build-widget-body';
 import { MOBA_APP_LINK } from '../../../config';
 import { genChampionPath } from '../../../utils/links';
 import { extractFromFlatList } from '../../../utils/squidex-data.utils';
+import { ChampionPageSection } from '../../../../common/types/champions';
+import { formatBuildName } from '../../../format/texts';
 
 interface Props {
   champion: string;
@@ -51,7 +53,7 @@ const MIN_WIDGET_WIDTH = 300;
 const SMALL_WIDGET_WIDTH = 560;
 
 export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
-  const { champion, role, compact, widgetWidth, region, patch, buildID, className } = props;
+  const { champion, role, compact, widgetWidth, region, patch, buildID, buildType, className } = props;
 
   const isSmall = !!(widgetWidth && widgetWidth < SMALL_WIDGET_WIDTH);
   const isCompact = compact || isSmall;
@@ -63,7 +65,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   } = useQuery<LolChampionWidgetDynamicQuery, LolChampionWidgetDynamicQueryVariables>(
     DYNAMIC_CHAMPION_BUILD_QUERY_GQL,
     {
-      variables: { champion, role, region, patch, buildID },
+      variables: { champion, role, region, patch, buildID, buildType },
       client: lolApi.dynamicDataClient,
     }
   );
@@ -94,8 +96,8 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
     return (
       <ChampionBuildWidgetError
         imgSrc={amumuCrying()}
-        title={'Something Wrong'}
-        text={'We are so sorry, but it seems that this widget or the Mobalytics platform are experiencing some problems at the moment.'}
+        title={'Something Went Wrong'}
+        text={'Sorry, but it appears that this widget or Mobalytics is experiencing some problems at the moment.'}
         link={{
           text: 'Check Mobalytics Status',
           url: MOBA_APP_LINK,
@@ -110,13 +112,12 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   const gameItems =  extractFromFlatList([...(staticData.itemsChunk1 || []), ...(staticData.itemsChunk2 || [])])?.filter(it => !!it.riotId);
 
   // build props
-  const { spells, items, skillOrder: rawSkillOrder, skillMaxOrder: rawSkillMaxOrder, stats, patch: buildPatch, perks} = championBuild || {};
+  const { id, type, vsChampionSlug, proPlayer, spells, items, skillOrder: rawSkillOrder, skillMaxOrder: rawSkillMaxOrder, stats, patch: buildPatch, perks, role: buildRole} = championBuild || {};
 
   // stats props
   const { abilities: rawAbilities, name: championName } = championStats || {};
 
   // header props
-  const roleName = validateStrEnumValue<Rolename>(Rolename, role);
   const winRate = stats && stats.wins && stats.matchCount ? calcWinRate(stats.wins, stats.matchCount - stats.wins) : null
   const abilities = rawAbilities && formatAbilities(rawAbilities);
 
@@ -127,18 +128,30 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   const skillMaxOrder = rawSkillMaxOrder && formatSkillMaxOrder(rawSkillMaxOrder);
 
   const isBuildAvailable = !!itemsBuild || !!skillOrder || !!abilitiesOrder || !!skillMaxOrder;
+  const bgClass = !isSmall && !isCompact ? Background(championSmallPosterImage(champion)) : '';
 
-  const bgClass = !isSmall && !isCompact ? Background(championPosterImage(champion)) : '';
+  const buildUrl = genChampionPath(champion, ChampionPageSection.BUILDS, {
+    region: region || undefined,
+    patch: patch || undefined,
+    buildID: id,
+    utm_medium: 'widget',
+    utm_source: 'champion_widget',
+    utm_campaign: window.location.host,
+    utm_content: 'build_link',
+  });
 
   if(championName){
+    const buildName = formatBuildName(championName, type, vsChampionSlug, proPlayer?.name);
     return (
       <div className={clsx(Wrapper, className)}>
         <BuildHeader
           championName={championName} championSlug={champion}
-          roleName={roleName}
+          buildName={buildName}
+          roleName={buildRole}
           patch={buildPatch}
           winRate={winRate}
           gamesCount={!isSmall ? stats?.matchCount : null}
+          region={region}
         />
         {
           isBuildAvailable ? (
@@ -161,13 +174,13 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
               text={`We need more game data to show a reliable build. This may be because a new patch just started or because there aren't enough players playing ${championName} as ${role}.`}
               link={{
                 text: `Check other ${championName} builds on Mobalytics`,
-                url: genChampionPath(champion),
+                url: buildUrl,
               }}
               className={clsx(Wrapper, bgClass)}
             />
           )
         }
-        <WidgetFooter championName={championName} championSlug={champion} isSmall={isSmall}/>
+        <WidgetFooter championName={championName} buildUrl={buildUrl} isSmall={isSmall}/>
       </div>
     );
   }
@@ -182,13 +195,13 @@ const Wrapper = css`
   display: flex;
   flex-direction: column;
   min-width: ${MIN_WIDGET_WIDTH}px;
-  background-color: #2d2652!important;
+  background-color: var(--moba-widget-bg-secondary-light)!important;
   border-radius: 6px;
 `;
 
 const Background = (bg: string) => css`
-  background: radial-gradient(56% 38% at 91% 0%, rgba(45, 38, 82, 0.2) 0%, #2C274F 100%), url('${bg}');
+  background: radial-gradient(98% 40% at 117% 10%, rgba(0, 0, 0, 0.6) 0%, var(--moba-widget-bg-secondary-light) 100%), url('${bg}');
   background-repeat: no-repeat;
   background-position: top right;
-  background-size: 500px;
+  background-size: 300px;
 `;

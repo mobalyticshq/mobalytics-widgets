@@ -6,30 +6,32 @@ import { mobalyticsLogoSymbol } from '../../utils/images';
 
 import { MiddleDot } from '../../format/symbols';
 import { Text12x400Mixin, Text12x500Mixin } from '../../ui/typography';
-import { genChampionPath } from '../../utils/links';
+import { genPathQuery } from '../../utils/links';
 import { MOBA_HOME_URL, MOBA_WIDGET_REPO_URL } from '../../config';
 
 interface Props {
   championName: string;
-  championSlug: string;
+  buildUrl: string;
   isSmall: boolean;
 }
 
 export const WidgetFooter: FunctionComponent<Props> = props => {
-  const { championName, championSlug, isSmall } = props;
+  const { championName, buildUrl, isSmall } = props;
+  const mobaHomePageURL = genPathQuery(MOBA_HOME_URL, { utm_medium: 'widget', utm_source: 'champion_widget', utm_campaign: window.location.host, utm_content: 'logo' });
+  const widgetLPURL = genPathQuery(MOBA_WIDGET_REPO_URL, { utm_medium: 'widget', utm_source: 'champion_widget', utm_campaign: window.location.host, utm_content: 'logo' });
   return (
     <div className={clsx(Wrapper, isSmall && SmallWrapper)}>
       <div className={LinksWrapper}>
-        <a href={genChampionPath(championSlug)}>See more {championName} builds</a>
+        <a href={buildUrl} target="_blank">See more {championName} builds</a>
         <span>{MiddleDot}</span>
-        <a href={MOBA_WIDGET_REPO_URL}>Get blog widget</a>
+        <a href={widgetLPURL} target="_blank">Get this widget</a>
       </div>
       <div className={LogoWrapper}>
         <span>Powered by</span>
-        <a href={MOBA_HOME_URL}>
+        <a href={mobaHomePageURL} target="_blank">
           <img src={mobalyticsLogoSymbol()} alt="Mobalytics logo" loading="lazy"/>
         </a>
-        <a href={MOBA_HOME_URL}>
+        <a href={mobaHomePageURL} target="_blank">
           <div className={Name}><span>MOB</span>ALYTICS.gg</div>
         </a>
       </div>
@@ -39,9 +41,9 @@ export const WidgetFooter: FunctionComponent<Props> = props => {
 
 
 const Wrapper = css`
-  background: #252046;
+  background: var(--moba-widget-bg-primary-dark);
   border-radius: 0 0 5px 5px;
-  border: 1px solid #3c2d69;
+  border-top: 1px solid var(--moba-widget-border-primary-light);
   min-height: 50px;
   padding: 0 12px;
   display: flex;
@@ -68,17 +70,17 @@ const LinksWrapper = css`
   padding: 10px 0;
 
   span {
-    color: #6B6889!important;
+    color: var(--moba-widget-text-secondary)!important;
     margin: 0 4px;
   }
 
   a {
-    color: #f2bf43!important;
+    color: var(--moba-widget-link-primary)!important;
     transition: color ease .2s;
 
     &:focus,
     &:hover{
-      color: #38C6F4!important;
+      color: var(--moba-widget-link-hover)!important;
     }
   }
 `;
@@ -87,7 +89,7 @@ const LogoWrapper = css`
   ${Text12x500Mixin};
   line-height: 20px!important;
   height: 50px;
-  color: #6B6889!important;
+  color: var(--moba-widget-text-secondary)!important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +104,7 @@ const LogoWrapper = css`
 const Name = css`
   ${Text12x400Mixin};
   line-height: 20px!important;
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
 
   span{
     font-weight: 700;

@@ -64,7 +64,7 @@ const Row = css`
 const Label = css`
   height: 8px;
   width: 80px;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 2px;
   margin-bottom: 8px;
   margin-top: 18px;
@@ -75,7 +75,7 @@ const Item = css`
   width: 36px;
   height: 36px;
   display: block;
-  background: #3C385C;
+  background: var(--moba-widget-skeleton-primary);
   border-radius: 2px;
   margin: 0 0 0 8px;
 

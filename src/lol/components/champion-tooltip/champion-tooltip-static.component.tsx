@@ -51,7 +51,7 @@ const Wrapper = css`
   height: 164px;
   overflow: hidden;
   position: relative;
-  border-right: 1px solid #141136;
+  border-right: 1px solid var(--moba-widget-border-secondary-dark);
 
   padding: 14px 12px;
 
@@ -84,14 +84,14 @@ const Row = css`
 
 const CardContent = css`
   ${Text12x500Mixin};
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
   position: relative;
   z-index: 2;
 
   & > span {
     ${Text16x700Mixin};
     display: block;
-    color: #fff!important;
+    color: var(--moba-widget-text-primary-light)!important;
     margin-bottom: 4px;
   }
 `;

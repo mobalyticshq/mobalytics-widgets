@@ -1,59 +1,52 @@
 import { SkillKey } from '../types/gql-dynamic/globalTypes';
 
-export enum winRateColors {
-  POOR = '#E54787',
-  AVERAGE = '#FFFFFF',
-  GOOD = '#1DC49B',
-  GREAT = '#85D0FF',
-}
-
 export function formatWinRateColor(winRate?: number) {
   if (winRate === undefined) {
-    return winRateColors.AVERAGE;
+    return 'var(--moba-widget-metric-wr-average)';
   }
   if (winRate < 40) {
-    return winRateColors.POOR;
+    return 'var(--moba-widget-metric-wr-poor)';
   }
   if (winRate >= 40 && winRate < 60) {
-    return winRateColors.AVERAGE;
+    return 'var(--moba-widget-metric-wr-average)';
   }
   if (winRate >= 60 && winRate < 80) {
-    return winRateColors.GOOD;
+    return 'var(--moba-widget-metric-wr-good)';
   }
   if (winRate >= 80) {
-    return winRateColors.GREAT;
+    return 'var(--moba-widget-metric-wr-great)';
   }
-  return winRateColors.AVERAGE;
+  return 'var(--moba-widget-metric-wr-average)';
 }
 
 export const getSkillKeyColor = (key: SkillKey): string => {
   switch(key){
     case SkillKey.PASSIVE:
-      return '#FFC306';
+      return 'var(--moba-widget-skill-key-passive)';
     case SkillKey.Q:
-      return '#38C6F4';
+      return 'var(--moba-widget-skill-key-q)';
     case SkillKey.W:
-      return '#47CC42';
+      return 'var(--moba-widget-skill-key-w)';
     case SkillKey.E:
-      return '#FF2576';
+      return 'var(--moba-widget-skill-key-e)';
     case SkillKey.R:
-      return '#858cb2';
+      return 'var(--moba-widget-skill-key-r)';
   }
 };
 
 export const getPerksColor = (perk: number): string => {
   switch (perk) {
     case 8000:
-      return '#f2bf43';
+      return 'var(--moba-widget-perk-8000)';
     case 8100:
-      return '#ca3e3f';
+      return 'var(--moba-widget-perk-8100)';
     case 8200:
-      return '#9ea9fb';
+      return 'var(--moba-widget-perk-8200)';
     case 8300:
-      return '#49aab9';
+      return 'var(--moba-widget-perk-8300)';
     case 8400:
-      return '#a1d586';
+      return 'var(--moba-widget-perk-8400)';
     default:
-      return '#fff';
+      return 'var(--moba-widget-perk-default)';
   }
 };

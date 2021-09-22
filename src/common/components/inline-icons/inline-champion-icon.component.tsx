@@ -14,7 +14,7 @@ export const InlineChampionIcon: FunctionComponent<Props> = props => {
 
 const Icon = css`
   display: block;
-  border: 2px solid #F2BF43;
+  border: 2px solid var(--moba-widget-border-secondary-light);
   border-radius: 50%;
   width: 16px;
   height: 16px;

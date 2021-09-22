@@ -66,7 +66,7 @@ const Header = css`
 
 const Name = css`
   ${Text14x700Mixin};
-  color: #B3B4D0!important;
+  color: var(--moba-widget-text-primary-dark)!important;
   text-transform: capitalize;
   margin-left: 8px;
 `;

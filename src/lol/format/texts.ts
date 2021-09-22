@@ -1,5 +1,6 @@
-import { LolChampionBuildItemsListType, Rolename } from '../types/gql-dynamic/globalTypes';
+import { LolChampionBuildItemsListType, LolChampionBuildType, Rolename } from '../types/gql-dynamic/globalTypes';
 import { t } from '../../common/i18n/i18n';
+import { NString, Nullable } from '../../common/types/lang';
 
 export function formatRoleName(position: Rolename): string {
   switch (position) {
@@ -60,4 +61,23 @@ export function formatRunesPath(slug: number): string {
     default:
       return '';
   }
+}
+
+export function formatBuildName(
+  championName: string,
+  buildType: Nullable<LolChampionBuildType>,
+  matchupChampionName: NString,
+  proPlayerName: NString
+): string{
+  switch (buildType) {
+    case LolChampionBuildType.MOST_POPULAR:
+      return `${championName} most popular build`;
+    case LolChampionBuildType.HIGHEST_WIN_RATE:
+      return `${championName} highest win rate build`;
+    case LolChampionBuildType.MATCHUP_SPECIFIC:
+      return `${championName} build ${matchupChampionName ? `VS ${matchupChampionName}` : ''}`;
+    case LolChampionBuildType.PRO_PLAYERS:
+      return `${championName} build  ${proPlayerName ? `used by ${proPlayerName}` : ''}`;
+  }
+  return `${championName} build`;
 }

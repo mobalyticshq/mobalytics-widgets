@@ -35,7 +35,7 @@ export const ChampionAbilityTooltip: FunctionComponent<Props> = props => {
   const onVideoError = useCallback(() => setVideo(null), [setVideo]);
 
   return (
-    <div className={clsx(Wrapper,className)}>
+    <div className={clsx([Wrapper, className])}>
       {!!video && (
         <video className={VideoStyled} loop={true} autoPlay={true} muted={true} placeholder={video.placeholder} onError={onVideoError}>
           <source src={video.webm} type="video/webm" />
@@ -78,8 +78,8 @@ export const ChampionAbilityTooltip: FunctionComponent<Props> = props => {
 
 const Wrapper = css`
   width: 280px;
-  background-color: #19133d!important;
-  border: 1px solid #221843;
+  background-color: var(--moba-widget-tooltip-bg)!important;
+  border: 1px solid var(--moba-widget-tooltip-border);
   border-radius: 5px;
 `;
 
@@ -93,7 +93,7 @@ const Content = css`
   position: relative;
   margin-top: -60px;
   padding: 8px 12px;
-  background-image: linear-gradient(to bottom, rgba(25, 19, 61, 0), #19133d 60px, #19133d 100%);
+  background-image: linear-gradient(to bottom, rgba(25, 19, 61, 0), var(--moba-widget-tooltip-bg) 60px, var(--moba-widget-tooltip-bg) 100%);
 
   > * + * {
     margin-top: 4px;
@@ -104,7 +104,7 @@ const Title = css`
   ${Text12x500Mixin};
   display: flex;
   align-items: center;
-  color: #fff!important;
+  color: var(--moba-widget-text-primary-light)!important;
 `;
 
 const ChampionAbilityKeySymbolStyled = css`
@@ -120,18 +120,18 @@ const ChampionAbilityKeySymbolStyled = css`
 `;
 
 const Description = css`
-  color: #aaabca!important;
+  color: var(--moba-widget-text-secondary)!important;
   line-height: 1.5!important;
   ${Text12x400Mixin};
 `;
 
 const AbilityMetric = css`
   ${Text12x400Mixin};
-  color: #8890b5!important;
+  color: var(--moba-widget-text-primary-dark)!important;
 `;
 
 const AbilityMetricValue = css`
   ${Text12x500Mixin};
-  color: #ffffff!important;
+  color: var(--moba-widget-text-primary-light)!important;
 `;
 

@@ -19,10 +19,10 @@ export const SkillProgressionText: FunctionComponent<Props> = props => {
 
  const Wrapper = css`
   ${Text12x400Mixin};
-  color: #8890b5!important;
+  color: var(--moba-widget-text-primary-dark)!important;
 `;
 
  const Value = css`
   font-weight: 500;
-  color: #ffffff!important;
+  color: var(--moba-widget-text-primary-light)!important;
 `;

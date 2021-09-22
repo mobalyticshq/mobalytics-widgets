@@ -6,3 +6,7 @@ export function processInt(value: any): number | null {
   const num = parseInt(value, 10);
   return isNaN(num) ? null : num;
 }
+
+export function formatNumber(value: number): string {
+  return value.toLocaleString('en')?.replace(/,/g, " ");
+}

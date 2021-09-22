@@ -34,6 +34,10 @@ export function championPosterImage(slug: string): string {
   return `${CDN_LOL_IMG_PATH}/dd/champions/backgrounds/${slug.toLowerCase()}.jpg`;
 }
 
+export function championSmallPosterImage(slug: string): string {
+  return `${CDN_LOL_IMG_PATH}/champions/bg-sm/${slug.toLowerCase()}.jpg`;
+}
+
 export function amumuCrying(): string {
   return `${CDN_LOL_IMG_PATH}/ui/game-items/items-list-empty.png`;
 }
