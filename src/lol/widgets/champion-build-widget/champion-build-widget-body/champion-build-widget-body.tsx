@@ -1,4 +1,4 @@
-import { FunctionComponent, h} from 'preact';
+import { FunctionComponent, h } from 'preact';
 import { css } from 'goober';
 import clsx from 'clsx';
 
@@ -13,12 +13,15 @@ import { IsCompactBlock } from '../../../components/is-compact/ic-compact-widget
 import { RunesBuildBlock } from '../../../components/runes/runes-build/runes-build.component';
 import { ChampionAbilitiesOrderBar } from '../../../components/champion-abilities-order-bar/champion-abilities-order-bar.component';
 import { ChampionAbilitiesOrder } from '../../../components/champion-abilities-order/champion-abilities-order.component';
-import { Nullable } from '../../../../common/types/lang';
+import { NString, Nullable } from '../../../../common/types/lang';
 import { Ability } from '../../../components/champion-abilities-order/types';
 import { ItemsBuildT } from '../../../components/items-build/types';
-import { SkillKey } from '../../../types/gql-dynamic/globalTypes';
+import { SkillKey, TierLevel } from '../../../types/gql-dynamic/globalTypes';
 import { Text12x500Mixin } from '../../../ui/typography';
 import { t } from '../../../../common/i18n/i18n';
+import { TierIcon } from '../../../components/images/tier.component';
+import { MOBA_TIER_LIST_URL } from '../../../config';
+import { WidgetSize } from '../../../types/widget-props';
 
 interface Props {
   abilities: Nullable<Ability[]>;
@@ -29,14 +32,19 @@ interface Props {
   spells: Nullable<number[]>;
   perks: Nullable<{ IDs: Nullable<number[]>; style: number; subStyle: number; }>;
 
+  tierLevel: Nullable<TierLevel>
+  patch: NString;
+
   isCompact: boolean;
   isSmall: boolean;
+  widgetSize: Nullable<WidgetSize>;
+
   className?: string;
 }
 
 export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
   const { abilities, itemsBuild, skillOrder, abilitiesOrder, skillMaxOrder, spells, perks } = props;
-  const { isCompact, isSmall, className } = props;
+  const { isCompact, isSmall, tierLevel, patch, widgetSize, className } = props;
 
   return (
     <div className={clsx(Content(isSmall), className)}>
@@ -66,12 +74,21 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
             {spells && <Spells spells={spells} className={SpellsStyle} />}
           </div>
         </div>
+
+        {tierLevel && patch && widgetSize &&(
+          <span className={clsx(TierListLinkWrapper, TierListLinkWrapperPosition(widgetSize))}>
+            <span>Click to see the Tier List</span>
+            <a href={MOBA_TIER_LIST_URL} target="_blank">
+              <TierIcon alt={`LoL tier list for every role in ${patch} patch`} name={tierLevel} />
+            </a>
+          </span>
+        )}
       </div>
 
       <div className={Col}>
         <div className={Title}>{t('Items')}</div>
         <div>
-          {itemsBuild && <ItemsBuildChain itemsBuild={itemsBuild}/>}
+          {itemsBuild && <ItemsBuildChain itemsBuild={itemsBuild} widgetSize={widgetSize}/>}
         </div>
       </div>
 
@@ -111,6 +128,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
 };
 
 
+
 const Content = (isSmall: boolean) => css`
   width: 100%;
   overflow: hidden;
@@ -131,6 +149,7 @@ const Row = css`
   display: flex;
   flex-wrap: wrap;
   padding: 10px var(--moba-widget-col-h-p);
+  position: relative;
 
   & > div {
     border: none;
@@ -183,3 +202,73 @@ const SkillOrderRow = css`
   display: flex;
   flex-wrap: wrap;
 `;
+
+  // top: 20px;
+  // right: 20px;
+const TierListLinkWrapper = css`
+  display: block;
+  width: 27px;
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+
+  span {
+    ${Text12x500Mixin};
+    color: var(--moba-widget-text-secondary)!important;
+    display: block;
+    position: absolute;
+
+    top: 50%;
+    right: 100%;
+    transform: translate(0, calc(-50% - 2px));
+    word-break: unset;
+    width: 148px;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition: opacity ease .2s;
+  }
+
+  &:hover{
+    span{
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+`;
+
+const TierListLinkWrapperPosition = (widgetSize: WidgetSize) => {
+
+  switch (widgetSize) {
+    case 'small':
+      return css`
+        bottom: 20px;
+        right: 20px;
+
+        &:hover{
+          span{
+            visibility: hidden;
+            opacity: 0;
+          }
+        }
+      `;
+    case 'medium':
+      return css`
+        bottom: 20px;
+        right: 20px;
+      `;
+    case 'large':
+      return css`
+        bottom: 20px;
+        right: 20px;
+      `;
+    case 'x-large':
+      return css`
+        top: 20px;
+        right: 20px;
+      `;
+  }
+}
+

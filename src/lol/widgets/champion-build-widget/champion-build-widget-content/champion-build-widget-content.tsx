@@ -36,6 +36,7 @@ import { genChampionPath } from '../../../utils/links';
 import { extractFromFlatList } from '../../../utils/squidex-data.utils';
 import { ChampionPageSection } from '../../../../common/types/champions';
 import { formatBuildName } from '../../../format/texts';
+import { WidgetSize } from '../../../types/widget-props';
 
 interface Props {
   champion: string;
@@ -46,6 +47,7 @@ interface Props {
   buildID?: NNumber;
   compact: boolean;
   widgetWidth: NNumber;
+  widgetSize: Nullable<WidgetSize>;
   className?: string;
 }
 
@@ -53,7 +55,7 @@ const MIN_WIDGET_WIDTH = 300;
 const SMALL_WIDGET_WIDTH = 560;
 
 export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
-  const { champion, role, compact, widgetWidth, region, patch, buildID, buildType, className } = props;
+  const { champion, role, compact, widgetWidth, region, patch, buildID, buildType, widgetSize, className } = props;
 
   const isSmall = !!(widgetWidth && widgetWidth < SMALL_WIDGET_WIDTH);
   const isCompact = compact || isSmall;
@@ -126,6 +128,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   const skillOrder = rawSkillOrder && formatSkillOrder(rawSkillOrder);
   const abilitiesOrder = rawSkillMaxOrder && abilities && formatAbilityOrder(rawSkillMaxOrder, abilities);
   const skillMaxOrder = rawSkillMaxOrder && formatSkillMaxOrder(rawSkillMaxOrder);
+  const tierLevel = dynamicData?.lol?.champion?.stats?.tier;
 
   const isBuildAvailable = !!itemsBuild || !!skillOrder || !!abilitiesOrder || !!skillMaxOrder;
   const bgClass = !isSmall && !isCompact ? Background(championSmallPosterImage(champion)) : '';
@@ -159,8 +162,11 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
               skillMaxOrder={skillMaxOrder}
               spells={spells}
               perks={perks}
+              tierLevel={tierLevel}
+              patch={buildPatch}
               isCompact={isCompact}
               isSmall={isSmall}
+              widgetSize={widgetSize}
               className={bgClass}
             />
           ) : (

@@ -3,7 +3,7 @@ import { getDocumentCookie } from './document';
 import { FandomDarkTheme, FandomLightTheme } from '../../lol/ui/themes';
 
 enum WidgetHost {
-  LOL_WIKI = 'leagueoflegends.fandom.com',
+  LOL_WIKI = 'fandom.com',
 }
 
 export enum WidgetThemeName {
@@ -12,7 +12,7 @@ export enum WidgetThemeName {
 }
 
 export function getWidgetThemeName (): Nullable<WidgetThemeName> {
-  if(window.location.host === WidgetHost.LOL_WIKI){
+  if(window.location.host.includes(WidgetHost.LOL_WIKI) ){
     const themeName = getDocumentCookie('theme');
     return themeName && themeName === 'light' ? WidgetThemeName.LOL_WIKI_LIGHT : WidgetThemeName.LOL_WIKI_DARK;
   }

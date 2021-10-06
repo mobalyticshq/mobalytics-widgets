@@ -7,12 +7,13 @@ import { TierLevel } from '../../types/gql-dynamic/globalTypes';
 
 interface Props {
   name: TierLevel;
+  alt?: string;
   className?: string;
 }
 
 export const TierIcon: FunctionComponent<Props> = props => {
-  const { name, className } = props;
-  return <img src={hexTierIcon(name)} className={clsx(Icon, className)} alt={name} loading="lazy" />;
+  const { name, alt, className } = props;
+  return <img src={hexTierIcon(name)} className={clsx(Icon, className)} alt={alt || name} loading="lazy" />;
 };
 
 const Icon = css`

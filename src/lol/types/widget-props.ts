@@ -1,5 +1,1 @@
-export enum WidgetPropBuildType {
-  'most-popular' ,
-  'highest-wr' ,
-  'recommended'
-}
+export type WidgetSize = 'small' | 'medium' | 'large' | 'x-large';

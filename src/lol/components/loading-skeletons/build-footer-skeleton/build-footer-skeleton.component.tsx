@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import { css } from 'goober';
 import { mobalyticsLogoSymbol } from '../../../utils/images';
 import { Text12x400Mixin, Text12x500Mixin } from '../../../ui/typography';
-import { MOBA_HOME_URL } from '../../../config';
 
 interface Props {
   isSmall: boolean;
@@ -20,12 +19,8 @@ export const BuildFooterSkeleton: FunctionComponent<Props> = props => {
       </div>
       <div className={LogoWrapper}>
         <span>Powered by</span>
-        <a href={MOBA_HOME_URL}>
           <img src={mobalyticsLogoSymbol()} alt="Mobalytics logo" loading="lazy"/>
-        </a>
-        <a href={MOBA_HOME_URL}>
           <div className={Name}><span>MOB</span>ALYTICS.gg</div>
-        </a>
       </div>
     </div>
   );

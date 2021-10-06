@@ -6,7 +6,7 @@ import { mobalyticsLogoSymbol } from '../../utils/images';
 
 import { MiddleDot } from '../../format/symbols';
 import { Text12x400Mixin, Text12x500Mixin } from '../../ui/typography';
-import { MOBA_HOME_URL, MOBA_WIDGET_REPO_URL } from '../../config';
+import { MOBA_WIDGET_REPO_URL } from '../../config';
 
 interface Props {
   championName: string;
@@ -26,12 +26,8 @@ export const WidgetFooter: FunctionComponent<Props> = props => {
       </div>
       <div className={LogoWrapper}>
         <span>Powered by</span>
-        <a href={MOBA_HOME_URL} target="_blank">
           <img src={mobalyticsLogoSymbol()} alt="Mobalytics logo" loading="lazy"/>
-        </a>
-        <a href={MOBA_HOME_URL} target="_blank">
           <div className={Name}><span>MOB</span>ALYTICS.gg</div>
-        </a>
       </div>
     </div>
   );
