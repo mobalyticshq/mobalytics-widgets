@@ -78,7 +78,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
         {tierLevel && patch && widgetSize &&(
           <span className={clsx(TierListLinkWrapper, TierListLinkWrapperPosition(widgetSize))}>
             {!isCompact && <span>Click to see the Tier List</span>}
-            <div className={Title}>{t('Tier')}</div>
+            {(isCompact || widgetSize !== 'x-large') &&<div className={Title}>{t('Tier')}</div>}
             <a href={MOBA_TIER_LIST_URL} target="_blank">
               <TierIcon alt={`LoL tier list for every role in ${patch} patch`} name={tierLevel} />
             </a>
@@ -269,10 +269,6 @@ const TierListLinkWrapperPosition = (widgetSize: WidgetSize) => {
       return css`
         top: 20px;
         right: 20px;
-
-        & > div {
-          display: none;
-        }
       `;
   }
 }

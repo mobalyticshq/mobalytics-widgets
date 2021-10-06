@@ -133,11 +133,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   const isBuildAvailable = !!itemsBuild || !!skillOrder || !!abilitiesOrder || !!skillMaxOrder;
   const bgClass = !isSmall && !isCompact ? Background(championSmallPosterImage(champion)) : '';
 
-  const buildUrl = genChampionPath(champion, ChampionPageSection.BUILDS, {
-    region: region || undefined,
-    patch: patch || undefined,
-    buildID: id,
-  });
+  const buildUrl = genChampionPath(champion, ChampionPageSection.BUILDS);
 
   if(championName){
     const buildName = formatBuildName(championName, type, vsChampionSlug, proPlayer?.name);
