@@ -15,11 +15,7 @@ interface Props {
 
 export const ItemIcon: FunctionComponent<Props> = props => {
   const { slug, name, isMythic, className } = props;
-
-  const { mountTooltip, triggerHandler, contentRef, contentClass, dataLoadedHandler } = useTooltipHook({
-    isAsync: true,
-  });
-
+  const { mountTooltip, triggerHandler, contentRef, contentClass, dataLoadedHandler, unmountTooltip } = useTooltipHook({ isAsync: true});
   return (
     <Fragment>
       <img
@@ -29,6 +25,7 @@ export const ItemIcon: FunctionComponent<Props> = props => {
         role="presentation"
         loading="lazy"
         onMouseOver={triggerHandler}
+        onMouseOut={unmountTooltip}
       />
       {
         mountTooltip && (

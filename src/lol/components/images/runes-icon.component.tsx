@@ -16,11 +16,7 @@ interface Props {
 
 export const RunesIcon: FunctionComponent<Props> = props => {
   const { slug, isActive, isKeystones, className } = props;
-
-  const { mountTooltip, triggerHandler, contentRef, contentClass, dataLoadedHandler } = useTooltipHook({
-    isAsync: true,
-  });
-
+  const { mountTooltip, triggerHandler, contentRef, contentClass, dataLoadedHandler, unmountTooltip } = useTooltipHook({ isAsync: true});
   return (
     <Fragment>
       <img
@@ -29,7 +25,8 @@ export const RunesIcon: FunctionComponent<Props> = props => {
         alt=""
         role="presentation"
         loading="lazy"
-        onMouseEnter={triggerHandler}
+        onMouseOver={triggerHandler}
+        onMouseOut={unmountTooltip}
       />
 
       {

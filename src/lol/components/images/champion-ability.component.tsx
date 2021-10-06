@@ -14,11 +14,7 @@ interface Props {
 
 export const ChampionAbilityIcon: FunctionComponent<Props> = props => {
   const { slug, name, className } = props;
-
-  const { mountTooltip, triggerHandler, contentRef, contentClass, dataLoadedHandler } = useTooltipHook({
-    isAsync: true,
-  });
-
+  const { mountTooltip, triggerHandler, contentRef, contentClass, dataLoadedHandler, unmountTooltip } = useTooltipHook({ isAsync: true});
   return (
     <Fragment>
       <img
@@ -28,6 +24,7 @@ export const ChampionAbilityIcon: FunctionComponent<Props> = props => {
         role="presentation"
         loading="lazy"
         onMouseEnter={triggerHandler}
+        onMouseOut={unmountTooltip}
       />
       {
         mountTooltip && (

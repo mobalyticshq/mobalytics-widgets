@@ -13,11 +13,7 @@ interface Props {
 
 export const SpellIcon: FunctionComponent<Props> = props => {
   const { riotId, className } = props;
-
-  const { mountTooltip, triggerHandler, contentRef, contentClass, dataLoadedHandler } = useTooltipHook({
-    isAsync: true,
-  });
-
+  const { mountTooltip, triggerHandler, contentRef, contentClass, dataLoadedHandler, unmountTooltip } = useTooltipHook({ isAsync: true});
   return (
     <Fragment>
       <img
@@ -27,6 +23,7 @@ export const SpellIcon: FunctionComponent<Props> = props => {
         role="presentation"
         loading="lazy"
         onMouseOver={triggerHandler}
+        onMouseOut={unmountTooltip}
       />
       {
         mountTooltip && (

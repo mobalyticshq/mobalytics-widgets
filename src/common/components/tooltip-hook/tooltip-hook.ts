@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { css } from 'goober';
+import { css, keyframes } from 'goober';
 import { VNode } from 'preact';
 import { createPortal } from 'preact/compat';
 import { useCallback, useContext, useEffect, useRef, useState } from 'preact/hooks';
@@ -13,9 +13,15 @@ function mountTooltip(vnode: VNode): VNode {
   return createPortal(vnode, document.body);
 }
 
+const rotate = keyframes`
+  from { opacity: 0; transform: translate(0, -5px); }
+  to { opacity: 1; transform: translate(0, 0px);}
+`;
+
 const contentClass = css`
   visibility: hidden;
   position: absolute;
+  animation: ${rotate} .15s ease-in forwards;
 `;
 
 export function useTooltipHook<TriggerElement extends Element = Element, PortalElement extends Element = Element>(
@@ -42,6 +48,8 @@ export function useTooltipHook<TriggerElement extends Element = Element, PortalE
     }
   }, []);
 
+  const unmountTooltip = useCallback(() => { hideAll({ duration: 0 }) }, []);
+
   useEffect(() => {
     if (!tippyRef.current && triggerElementRef.current) {
       const { isAsync, ...rest } = propsRef.current || {};
@@ -50,7 +58,7 @@ export function useTooltipHook<TriggerElement extends Element = Element, PortalE
         ...rest,
         delay: 0,
         onShow: (instance: TippyInstance) => {
-          hideAll({ duration: 0 });
+          hideAll({ duration: 0, exclude: instance });
           const content = instance.props.content as HTMLElement | null;
           if (content) {
             content.style.visibility = 'visible';
@@ -66,6 +74,7 @@ export function useTooltipHook<TriggerElement extends Element = Element, PortalE
     contentRef,
     triggerHandler,
     dataLoadedHandler,
+    unmountTooltip,
     contentClass: clsx(contentClass, DefaultTheme, themeClassName),
     mountTooltip: triggerElementRef.current ? mountTooltip : null,
   };
