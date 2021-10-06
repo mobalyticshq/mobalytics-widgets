@@ -41,6 +41,9 @@ Done! Here is a minimal code snippet
 </html>
 ```
 
+#### Installing Script on Your Server
+If you want to install the script on your own server instead of using [Jsdelivr](https://cdn.jsdelivr.net) CDN, use the following link to <a href="https://cdn.jsdelivr.net/gh/mobalyticshq/mobalytics-widgets/build/mobalytics-widgets.js" target="_blank" download="mobalytics-widgets.js">download</a>.
+
 ## Widgets
 
 ### LoL Champion Build Widget
