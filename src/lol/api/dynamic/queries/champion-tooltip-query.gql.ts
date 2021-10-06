@@ -7,7 +7,7 @@ export const CHAMPION_TOOLTIP_QUERY_GQL = gql`
         build{
           role
         }
-        stats {
+        stats(topHistoryPoints: 2) {
           winRateHistory {
             x
             value
