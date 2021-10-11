@@ -63,5 +63,5 @@ export function championClassIcon(slug: string) {
  *    ?1 in the end of URL need for reset cache after gold color was updated
  */
 export function hexTierIcon(tier: string): string {
-  return `${CDN_COMMON_ICON_PATH}/hex-tiers/${tier.toUpperCase()}.svg?1`;
+  return `${CDN_COMMON_ICON_PATH}/hex-tiers/${tier.toUpperCase()}.svg`;
 }

@@ -175,7 +175,7 @@ const Title = css`
   ${Text12x500Mixin};
   color: var(--moba-widget-text-primary-light)!important;
   text-transform: uppercase;
-  margin: 0 8px 8px 0;
+  margin: 0 8px 12px 0;
 `;
 
 const SpellsStyle = css`
@@ -242,7 +242,7 @@ const TierListLinkWrapperPosition = (widgetSize: WidgetSize) => {
   switch (widgetSize) {
     case 'small':
       return css`
-        bottom: 20px;
+        bottom: 24px;
         right: 20px;
 
         &:hover{
@@ -255,13 +255,13 @@ const TierListLinkWrapperPosition = (widgetSize: WidgetSize) => {
 
     case 'medium':
       return css`
-        bottom: 20px;
+        bottom: 24px;
         right: 20px;
       `;
 
     case 'large':
       return css`
-        bottom: 20px;
+        bottom: 24px;
         right: 20px;
       `;
 
