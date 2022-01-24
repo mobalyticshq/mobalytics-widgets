@@ -121,4 +121,4 @@ LoL Champion Tooltip Widget uses links to Mobalytics champion build pages as a h
      alt="How to find LoL Champion Slug"  height="200">
 
 ## License
-MIT License
+[MIT License](https://github.com/mobalyticshq/mobalytics-widgets/commit/729ed56ccc20de4e215c113a1402bf8249ae3d32)
