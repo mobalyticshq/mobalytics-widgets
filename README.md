@@ -60,6 +60,7 @@ LoL Champion Build Widgets display the most popular champion build on automatica
 | `data-moba-widget` | Widget ID `lol-champion-build` |
 | `data-moba-champion` | Slug of the champion, follow [instructions](#)<br/>to see full slugs list. |
 | `data-moba-champion-role` | Role of the champion, possible values are<br/>`ADC`, `JUNGLE`, `MID`, `SUPPORT`, `TOP`. |
+| `data-moba-champion-tier-icon` | Show or hide champion tier icon<br/>`ON`, `OFF`. |
 
 **Example**
 ```
