@@ -48,6 +48,7 @@ interface Props {
   compact: boolean;
   widgetWidth: NNumber;
   widgetSize: Nullable<WidgetSize>;
+  showTierIcon: boolean;
   className?: string;
 }
 
@@ -55,7 +56,8 @@ const MIN_WIDGET_WIDTH = 300;
 const SMALL_WIDGET_WIDTH = 560;
 
 export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
-  const { champion, role, compact, widgetWidth, region, patch, buildID, buildType, widgetSize, className } = props;
+  const { champion, role, compact, widgetWidth, region, patch, buildID, buildType, widgetSize, showTierIcon } = props;
+  const { className } = props;
 
   const isSmall = !!(widgetWidth && widgetWidth < SMALL_WIDGET_WIDTH);
   const isCompact = compact || isSmall;
@@ -114,7 +116,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   const gameItems =  extractFromFlatList([...(staticData.itemsChunk1 || []), ...(staticData.itemsChunk2 || [])])?.filter(it => !!it.riotId);
 
   // build props
-  const { id, type, vsChampionSlug, proPlayer, spells, items, skillOrder: rawSkillOrder, skillMaxOrder: rawSkillMaxOrder, stats, patch: buildPatch, perks, role: buildRole} = championBuild || {};
+  const { type, vsChampionSlug, proPlayer, spells, items, skillOrder: rawSkillOrder, skillMaxOrder: rawSkillMaxOrder, stats, patch: buildPatch, perks, role: buildRole} = championBuild || {};
 
   // stats props
   const { abilities: rawAbilities, name: championName } = championStats || {};
@@ -163,6 +165,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
               isCompact={isCompact}
               isSmall={isSmall}
               widgetSize={widgetSize}
+              showTierIcon={showTierIcon}
               className={bgClass}
             />
           ) : (

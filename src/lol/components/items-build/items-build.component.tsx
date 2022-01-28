@@ -18,10 +18,10 @@ export const ItemsBuild: FunctionComponent<Props> = props => {
     <div className={className} >
       <div className={Label}>{itemsBuild.type && formatItemsBuildType(itemsBuild.type)}</div>
       <div className={Row}>
-        {itemsBuild.items.map((it) => {
+        {itemsBuild.items.map((it, index) => {
           return (
             <ItemIcon
-              key={it.riotId}
+              key={it.riotId + index}
               slug={it.riotId.toString()}
               className={Item}
               {...it}

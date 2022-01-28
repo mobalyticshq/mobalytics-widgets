@@ -16,7 +16,7 @@ export const ItemsBuildChain: FunctionComponent<Props> = props => {
   const { itemsBuild, widgetSize } = props;
   return (
     <div className={Wrapper(widgetSize)}>
-      {itemsBuild.map((it) => <ItemsBuild itemsBuild={it} key={it.type}/>)}
+      {itemsBuild.map((it, index) => <ItemsBuild itemsBuild={it} key={index}/>)}
     </div>
   );
 };
