@@ -38,13 +38,15 @@ interface Props {
   isCompact: boolean;
   isSmall: boolean;
   widgetSize: Nullable<WidgetSize>;
+  showTierIcon: boolean;
 
   className?: string;
 }
 
 export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
   const { abilities, itemsBuild, skillOrder, abilitiesOrder, skillMaxOrder, spells, perks } = props;
-  const { isCompact, isSmall, tierLevel, patch, widgetSize, className } = props;
+  const { tierLevel, patch } = props;
+  const { isCompact, isSmall, showTierIcon, widgetSize, className } = props;
 
   return (
     <div className={clsx(Content(isSmall), className)}>
@@ -75,7 +77,7 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
           </div>
         </div>
 
-        {tierLevel && patch && widgetSize &&(
+        {tierLevel && patch && widgetSize && showTierIcon && (
           <span className={clsx(TierListLinkWrapper, TierListLinkWrapperPosition(widgetSize))}>
             {!isCompact && <span>Click to see the Tier List</span>}
             {(isCompact || widgetSize !== 'x-large') &&<div className={Title}>{t('Tier')}</div>}

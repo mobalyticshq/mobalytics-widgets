@@ -17,6 +17,7 @@ interface Props {
   dataMobaChampionPatch?: NString;
   dataMobaChampionBuildType?: NString;
   dataMobaChampionBuildId?: NString;
+  dataMobaChampionTier?: NString;
   dataMobaWidth?: NNumber;
 }
 
@@ -36,6 +37,7 @@ const WidgetEntrypoint: FunctionComponent<Props> = props => {
     dataMobaChampionPatch,
     dataMobaChampionBuildType,
     dataMobaChampionBuildId,
+    dataMobaChampionTier = 'ON',
   } = props;
 
   // render async widget base on widget type
@@ -52,6 +54,7 @@ const WidgetEntrypoint: FunctionComponent<Props> = props => {
           buildID={dataMobaChampionBuildId}
           widgetWidth={dataMobaWidth}
           isCompact={dataMobaWidget === Widgets.LOL_CHAMPION_BUILD_COMPACT}
+          showTierIcon={dataMobaChampionTier?.toUpperCase() === 'ON'}
         />
       );
     default:

@@ -21,11 +21,12 @@ interface Props {
   buildType: NString;
   buildID: NString;
   widgetWidth: NNumber;
+  showTierIcon: boolean;
   isCompact?: boolean;
 }
 
 const ChampionBuildWidget: FunctionComponent<Props> = props => {
-  const { isCompact, champion, role, widgetWidth, patch, region, buildType, buildID } = props;
+  const { isCompact, champion, role, widgetWidth, patch, region, buildType, buildID, showTierIcon } = props;
   const validatedRole = validateRolename(role);
   const validatedRegion = validateRegion(region);
   const validatedBuildType = buildType ? formatBuildType(buildType) : null;
@@ -45,6 +46,7 @@ const ChampionBuildWidget: FunctionComponent<Props> = props => {
           widgetWidth={widgetWidth}
           widgetSize={widgetSize}
           className={clsx(Wrapper(height ? `${height}px`: 'auto'))}
+          showTierIcon={showTierIcon}
         />
       ) : (
         <ChampionBuildWidgetError

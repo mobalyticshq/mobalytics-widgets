@@ -1,6 +1,6 @@
 {
   "name": "mobalytics-widgets",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "description": "",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
