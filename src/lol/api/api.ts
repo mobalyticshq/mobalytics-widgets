@@ -2,7 +2,7 @@ import { GraphQLClient } from 'graphql-hooks';
 
 // todo: move url to env var
 const staticDataClient = new GraphQLClient({
-  url: 'https://cf-gql-proxy.mobalytics.workers.dev/lol-static-gql',
+  url: 'https://extwidget.mobalytics.gg/lol-static-gql',
   headers: {
     'Accept-Language': 'en_us',
   }
@@ -10,7 +10,7 @@ const staticDataClient = new GraphQLClient({
 
 // todo: move url to env var
 const dynamicDataClient = new GraphQLClient({
-  url: 'https://cf-gql-proxy.mobalytics.workers.dev/lol-gql',
+  url: 'https://extwidget.mobalytics.gg/lol-gql',
   headers: {
     'Accept-Language': 'en_us',
   }
