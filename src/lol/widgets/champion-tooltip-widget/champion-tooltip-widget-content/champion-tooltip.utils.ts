@@ -11,7 +11,7 @@ export function formatMetric(
 ): Nullable<{ value: number; isDown: boolean }> {
   const list = history.slice().reverse() || [];
   const [curr, prev] = list;
-  return curr?.value ? { value: curr.value, isDown: !!(prev.value && curr?.value < prev.value) } : null;
+  return curr?.value ? { value: curr?.value, isDown: !!(prev?.value && curr?.value < prev?.value) } : null;
 }
 
 export function formatCounters(
