@@ -194,7 +194,7 @@ const AbilitiesOrder = css`
 
 const TitleWrapper = css`
   display: flex;
-  margin: 0 0 8px 0;
+  margin: 0;
 
   h3{
     margin: 0 12px 0 0;

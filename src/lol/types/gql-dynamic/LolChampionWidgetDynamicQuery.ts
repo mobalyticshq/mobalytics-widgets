@@ -42,6 +42,9 @@ export interface LolChampionWidgetDynamicQuery_lol_champion_build {
   patch: string | null;
   championSlug: string;
   vsChampionSlug: string | null;
+  /**
+   * DEPRECATED: use topPlayer
+   */
   proPlayer: LolChampionWidgetDynamicQuery_lol_champion_build_proPlayer | null;
   spells: number[] | null;
   skillOrder: number[] | null;

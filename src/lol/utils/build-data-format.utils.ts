@@ -10,6 +10,8 @@ import { extractFromFlatList } from './squidex-data.utils';
 import { Nullable } from '../../common/types/lang';
 import { LolGameItemFragment } from '../types/gql-static/LolGameItemFragment';
 
+const EXCLUDED_ITEM_BUILD_TYPES= [LolChampionBuildItemsListType.Situational,LolChampionBuildItemsListType.MythicItem]
+
 export function formatItemsBuild(
   itemsBuild: LolChampionWidgetDynamicQuery_lol_champion_build_items[],
   gameItems: LolGameItemFragment[]
@@ -17,17 +19,20 @@ export function formatItemsBuild(
   return itemsBuild
     .map(it => {
       const { type, items } = it;
-      if (items && type && type !== LolChampionBuildItemsListType.Situational) {
+      if (items && type && !EXCLUDED_ITEM_BUILD_TYPES.includes(type)) {
         const connectedItems: Nullable<{ riotId: number; name: string; isMythic: boolean }[]> = items
           .map(it => {
             const item = gameItems.find(i => (i.riotId === it));
-            return it && item && item.name
-              ? {
+
+            if(it && item && item.name){
+              return {
                 riotId: it,
                 name: item.name,
                 isMythic: !!extractFromFlatList(item.type)?.find(type => type.slug === 'mythic'),
               }
-              : null;
+            }
+
+            return null;
           })
           .filter(filterNonNull);
         return { type, items: connectedItems };

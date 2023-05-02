@@ -29,6 +29,8 @@ export function formatItemsBuildType(type: LolChampionBuildItemsListType): strin
       return t('Early Items');
     case LolChampionBuildItemsListType.FullBuild:
       return t('Additional Items');
+    case LolChampionBuildItemsListType.MythicItem:
+      return t('Mythic Items');
     case LolChampionBuildItemsListType.Situational:
       return t('Situational Items');
     case LolChampionBuildItemsListType.Starter:

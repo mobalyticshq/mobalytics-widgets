@@ -15,6 +15,7 @@ export enum LolChampionBuildItemsListType {
   FirstCore = "FirstCore",
   FourthItem = "FourthItem",
   FullBuild = "FullBuild",
+  MythicItem = "MythicItem",
   SecondCore = "SecondCore",
   Situational = "Situational",
   SixthItem = "SixthItem",
@@ -22,9 +23,11 @@ export enum LolChampionBuildItemsListType {
 }
 
 export enum LolChampionBuildType {
+  ALTERNATIVE = "ALTERNATIVE",
   HIGHEST_WIN_RATE = "HIGHEST_WIN_RATE",
   MATCHUP_SPECIFIC = "MATCHUP_SPECIFIC",
   MOST_POPULAR = "MOST_POPULAR",
+  OFF_META = "OFF_META",
   OPTIONAL = "OPTIONAL",
   PRO_PLAYERS = "PRO_PLAYERS",
   RECOMMENDED = "RECOMMENDED",
@@ -49,9 +52,14 @@ export enum Region {
   NA = "NA",
   OCE = "OCE",
   PBE = "PBE",
+  PH = "PH",
   RU = "RU",
+  SG = "SG",
+  TH = "TH",
   TR = "TR",
+  TW = "TW",
   UNKNOWN = "UNKNOWN",
+  VN = "VN",
 }
 
 export enum Rolename {

@@ -24,7 +24,7 @@ export const ItemsBuildChain: FunctionComponent<Props> = props => {
 const Wrapper = (widgetSize: Nullable<WidgetSize>) => css`
   display: flex;
   flex-wrap: wrap;
-  margin-top: -8px;
+  margin-top: -16px;
 
   & > p {
     margin-top: 8px;
