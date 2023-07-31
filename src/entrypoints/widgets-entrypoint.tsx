@@ -19,6 +19,7 @@ interface Props {
   dataMobaChampionBuildId?: NString;
   dataMobaChampionTierIcon?: NString;
   dataMobaWidth?: NNumber;
+  dataMobaGameMode?: NString;
 }
 
 const WidgetEntrypoint: FunctionComponent<Props> = props => {
@@ -35,6 +36,7 @@ const WidgetEntrypoint: FunctionComponent<Props> = props => {
     dataMobaWidth,
     dataMobaChampionRegion,
     dataMobaChampionPatch,
+    dataMobaGameMode,
     dataMobaChampionBuildType,
     dataMobaChampionBuildId,
     dataMobaChampionTierIcon = 'ON',
@@ -50,6 +52,7 @@ const WidgetEntrypoint: FunctionComponent<Props> = props => {
           role={dataMobaChampionRole}
           region={dataMobaChampionRegion}
           patch={dataMobaChampionPatch}
+          gameMode={dataMobaGameMode}
           buildType={dataMobaChampionBuildType}
           buildID={dataMobaChampionBuildId}
           widgetWidth={dataMobaWidth}

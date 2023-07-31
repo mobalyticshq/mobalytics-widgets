@@ -1,4 +1,9 @@
-import { LolChampionBuildItemsListType, LolChampionBuildType, Rolename } from '../types/gql-dynamic/globalTypes';
+import {
+  GameMode,
+  LolChampionBuildItemsListType,
+  LolChampionBuildType,
+  Rolename,
+} from '../types/gql-dynamic/globalTypes';
 import { t } from '../../common/i18n/i18n';
 import { NString, Nullable } from '../../common/types/lang';
 
@@ -70,7 +75,7 @@ export function formatBuildName(
   buildType: Nullable<LolChampionBuildType>,
   matchupChampionName: NString,
   proPlayerName: NString
-): string{
+): string {
   switch (buildType) {
     case LolChampionBuildType.MOST_POPULAR:
       return `${championName} most popular build`;
@@ -82,4 +87,16 @@ export function formatBuildName(
       return `${championName} build  ${proPlayerName ? `used by ${proPlayerName}` : ''}`;
   }
   return `${championName} build`;
+}
+
+export function formatPrefix(gameMode: GameMode): string {
+  switch (gameMode) {
+    case GameMode.SUMMONER_RIFT:
+      return ``;
+    case GameMode.ARAM:
+      return `ARAM`;
+    case GameMode.ARENA:
+      return `Arena`;
+  }
+  return ``;
 }

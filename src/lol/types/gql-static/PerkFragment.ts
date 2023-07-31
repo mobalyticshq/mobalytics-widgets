@@ -3,14 +3,14 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-type GqlTagsScalar = string[] | null;
-
 // ====================================================
 // GraphQL fragment: PerkFragment
 // ====================================================
 
+import { GqlTagsScalar } from './globalTypes';
+
 export interface PerkFragment_flatData {
-  __typename: "RunesV1DataFlatDto";
+  __typename: 'RunesV1DataFlatDto';
   riotId: number | null;
   name: string | null;
   slug: string | null;
@@ -21,7 +21,7 @@ export interface PerkFragment_flatData {
 }
 
 export interface PerkFragment {
-  __typename: "RunesV1";
+  __typename: 'RunesV1';
   /**
    * The id of the Perks content.
    */

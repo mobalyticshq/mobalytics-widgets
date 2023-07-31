@@ -8,14 +8,14 @@
 // ====================================================
 
 export interface LolChampionWidgetStaticQuery_champion_flatData_abilities_flatData {
-  __typename: "ChampionsAbilitiesV1DataFlatDto";
+  __typename: 'ChampionsAbilitiesV1DataFlatDto';
   slug: string | null;
   name: string | null;
   activationKey: string | null;
 }
 
 export interface LolChampionWidgetStaticQuery_champion_flatData_abilities {
-  __typename: "ChampionsAbilitiesV1";
+  __typename: 'ChampionsAbilitiesV1';
   /**
    * The id of the Abilities content.
    */
@@ -27,13 +27,13 @@ export interface LolChampionWidgetStaticQuery_champion_flatData_abilities {
 }
 
 export interface LolChampionWidgetStaticQuery_champion_flatData {
-  __typename: "ChampionsV1DataFlatDto";
+  __typename: 'ChampionsV1DataFlatDto';
   name: string | null;
   abilities: LolChampionWidgetStaticQuery_champion_flatData_abilities[] | null;
 }
 
 export interface LolChampionWidgetStaticQuery_champion {
-  __typename: "ChampionsV1";
+  __typename: 'ChampionsV1';
   /**
    * The id of the Champions content.
    */
@@ -45,13 +45,13 @@ export interface LolChampionWidgetStaticQuery_champion {
 }
 
 export interface LolChampionWidgetStaticQuery_perks_flatData {
-  __typename: "RunesV1DataFlatDto";
+  __typename: 'RunesV1DataFlatDto';
   riotId: number | null;
   name: string | null;
 }
 
 export interface LolChampionWidgetStaticQuery_perks {
-  __typename: "RunesV1";
+  __typename: 'RunesV1';
   /**
    * The id of the Perks content.
    */
@@ -63,13 +63,13 @@ export interface LolChampionWidgetStaticQuery_perks {
 }
 
 export interface LolChampionWidgetStaticQuery_itemsChunk1_flatData_type_flatData {
-  __typename: "GameItemTypeV1DataFlatDto";
+  __typename: 'GameItemTypeV1DataFlatDto';
   name: string | null;
   slug: string | null;
 }
 
 export interface LolChampionWidgetStaticQuery_itemsChunk1_flatData_type {
-  __typename: "GameItemTypeV1";
+  __typename: 'GameItemTypeV1';
   /**
    * The flat data of the Game Item Type content.
    */
@@ -77,14 +77,14 @@ export interface LolChampionWidgetStaticQuery_itemsChunk1_flatData_type {
 }
 
 export interface LolChampionWidgetStaticQuery_itemsChunk1_flatData {
-  __typename: "GameItemsV1DataFlatDto";
+  __typename: 'GameItemsV1DataFlatDto';
   riotId: number | null;
   name: string | null;
   type: LolChampionWidgetStaticQuery_itemsChunk1_flatData_type[] | null;
 }
 
 export interface LolChampionWidgetStaticQuery_itemsChunk1 {
-  __typename: "GameItemsV1";
+  __typename: 'GameItemsV1';
   /**
    * The flat data of the Game Items content.
    */
@@ -92,13 +92,13 @@ export interface LolChampionWidgetStaticQuery_itemsChunk1 {
 }
 
 export interface LolChampionWidgetStaticQuery_itemsChunk2_flatData_type_flatData {
-  __typename: "GameItemTypeV1DataFlatDto";
+  __typename: 'GameItemTypeV1DataFlatDto';
   name: string | null;
   slug: string | null;
 }
 
 export interface LolChampionWidgetStaticQuery_itemsChunk2_flatData_type {
-  __typename: "GameItemTypeV1";
+  __typename: 'GameItemTypeV1';
   /**
    * The flat data of the Game Item Type content.
    */
@@ -106,18 +106,34 @@ export interface LolChampionWidgetStaticQuery_itemsChunk2_flatData_type {
 }
 
 export interface LolChampionWidgetStaticQuery_itemsChunk2_flatData {
-  __typename: "GameItemsV1DataFlatDto";
+  __typename: 'GameItemsV1DataFlatDto';
   riotId: number | null;
   name: string | null;
   type: LolChampionWidgetStaticQuery_itemsChunk2_flatData_type[] | null;
 }
 
 export interface LolChampionWidgetStaticQuery_itemsChunk2 {
-  __typename: "GameItemsV1";
+  __typename: 'GameItemsV1';
   /**
    * The flat data of the Game Items content.
    */
   flatData: LolChampionWidgetStaticQuery_itemsChunk2_flatData;
+}
+
+export interface LolChampionWidgetStaticQuery_championAugments_flatData {
+  __typename: 'ChampionsAugmentsV1DataFlatDto';
+  riotId: number | null;
+  name: string | null;
+  description: string | null;
+  rarity: number | null;
+}
+
+export interface LolChampionWidgetStaticQuery_championAugments {
+  __typename: 'ChampionsAugmentsV1';
+  /**
+   * The flat data of the Augments content.
+   */
+  flatData: LolChampionWidgetStaticQuery_championAugments_flatData;
 }
 
 export interface LolChampionWidgetStaticQuery {
@@ -137,6 +153,10 @@ export interface LolChampionWidgetStaticQuery {
    * Query Game Items content items.
    */
   itemsChunk2: LolChampionWidgetStaticQuery_itemsChunk2[] | null;
+  /**
+   * Query Augments content items.
+   */
+  championAugments: LolChampionWidgetStaticQuery_championAugments[] | null;
 }
 
 export interface LolChampionWidgetStaticQueryVariables {

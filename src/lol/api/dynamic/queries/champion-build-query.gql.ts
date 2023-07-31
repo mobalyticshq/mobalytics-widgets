@@ -8,9 +8,10 @@ export const DYNAMIC_CHAMPION_BUILD_QUERY_GQL = gql`
     $region: Region
     $buildID: Int
     $buildType: LolChampionBuildType
+    $gameMode: GameMode!
   ) {
     lol {
-      champion(filters: { slug: $champion, role: $role, patch: $patch, region: $region }) {
+      champion(filters: { slug: $champion, role: $role, patch: $patch, region: $region, gameMode: $gameMode }) {
         build(filters: { buildId: $buildID, type: $buildType }) {
           id
           type
@@ -37,6 +38,12 @@ export const DYNAMIC_CHAMPION_BUILD_QUERY_GQL = gql`
           stats {
             wins
             matchCount
+          }
+          augmentOptions {
+            augments {
+              id
+              pickRate
+            }
           }
         }
         stats {

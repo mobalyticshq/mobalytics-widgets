@@ -16,12 +16,15 @@ import { ChampionAbilitiesOrder } from '../../../components/champion-abilities-o
 import { NString, Nullable } from '../../../../common/types/lang';
 import { Ability } from '../../../components/champion-abilities-order/types';
 import { ItemsBuildT } from '../../../components/items-build/types';
-import { SkillKey, TierLevel } from '../../../types/gql-dynamic/globalTypes';
+import { GameMode, SkillKey, TierLevel } from '../../../types/gql-dynamic/globalTypes';
 import { Text12x500Mixin } from '../../../ui/typography';
 import { t } from '../../../../common/i18n/i18n';
 import { TierIcon } from '../../../components/images/tier.component';
 import { MOBA_TIER_LIST_URL } from '../../../config';
 import { WidgetSize } from '../../../types/widget-props';
+import { AugmentsRecommendationsBlockAugments } from '../../../components/augments-recommendations-block/augments-recommendations-block.types';
+import { AugmentsRecommendationsBlock } from '../../../components/augments-recommendations-block/augments-recommendations-block.component';
+import { formatPrefix } from '../../../format/texts';
 
 interface Props {
   abilities: Nullable<Ability[]>;
@@ -30,9 +33,10 @@ interface Props {
   abilitiesOrder: Nullable<Ability[]>;
   skillMaxOrder: Nullable<SkillKey[]>;
   spells: Nullable<number[]>;
-  perks: Nullable<{ IDs: Nullable<number[]>; style: number; subStyle: number; }>;
+  perks: Nullable<{ IDs: Nullable<number[]>; style: number; subStyle: number }>;
+  augments?: Nullable<AugmentsRecommendationsBlockAugments[]>;
 
-  tierLevel: Nullable<TierLevel>
+  tierLevel: Nullable<TierLevel>;
   patch: NString;
 
   isCompact: boolean;
@@ -40,47 +44,71 @@ interface Props {
   widgetSize: Nullable<WidgetSize>;
   showTierIcon: boolean;
 
+  gameMode: GameMode;
+
   className?: string;
 }
 
 export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
-  const { abilities, itemsBuild, skillOrder, abilitiesOrder, skillMaxOrder, spells, perks } = props;
-  const { tierLevel, patch } = props;
+  const { abilities, itemsBuild, skillOrder, abilitiesOrder, skillMaxOrder, spells, perks, augments } = props;
+  const { tierLevel, patch, gameMode } = props;
   const { isCompact, isSmall, showTierIcon, widgetSize, className } = props;
+
+  const gameModePrefix = formatPrefix(gameMode);
+
+  const isTierIcon =
+    tierLevel && patch && widgetSize && showTierIcon && !(gameMode === GameMode.ARENA && widgetSize === 'small');
 
   return (
     <div className={clsx(Content(isSmall), className)}>
       <div className={clsx(Row, !isCompact && FlexEnd)}>
-        <div className={clsx(isSmall && CompactRunesWrapper, Col)}>
-          <div className={Title}>{t('Runes')}</div>
-          <div>
-            {perks?.IDs && (
+        {perks?.IDs && !augments && (
+          <div className={clsx(isSmall && CompactRunesWrapper, Col)}>
+            <div className={Title}>
+              {gameModePrefix} {t('Runes')}
+            </div>
+            <div>
               <IsCompactBlock<RunesComponentProps>
                 componentProps={{
-                  keystone:perks.IDs[0],
-                  runes:formatRunesData(perks.IDs),
-                  style:perks?.style,
-                  subStyle:perks?.subStyle,
+                  keystone: perks.IDs[0],
+                  runes: formatRunesData(perks.IDs),
+                  style: perks?.style,
+                  subStyle: perks?.subStyle,
                 }}
                 CompactWidget={RunesBuildCompactBlock}
                 LargeWidget={RunesBuildBlock}
                 isCompact={isCompact}
               />
-            )}
+            </div>
           </div>
-        </div>
+        )}
 
-        <div className={Col}>
-          <div className={Title}>{t('Spells')}</div>
-          <div>
-            {spells && <Spells spells={spells} className={SpellsStyle} />}
+        {augments && (
+          <div className={clsx(isSmall && CompactRunesWrapper, Col, augmentsCss)}>
+            <div className={Title}>
+              {t('Arena augments')}
+              <span>{t('Pick Priority')}</span>
+
+              <AugmentsRecommendationsBlock augments={augments} />
+            </div>
           </div>
-        </div>
+        )}
 
-        {tierLevel && patch && widgetSize && showTierIcon && (
+        {spells && (
+          <div className={Col}>
+            <div className={Title}>
+              {gameModePrefix} {t('Spells')}
+            </div>
+            <div>
+              <Spells spells={spells} className={SpellsStyle} />
+            </div>
+          </div>
+        )}
+
+        {isTierIcon && widgetSize && tierLevel && (
           <span className={clsx(TierListLinkWrapper, TierListLinkWrapperPosition(widgetSize))}>
             {!isCompact && <span>Click to see the Tier List</span>}
-            {(isCompact || widgetSize !== 'x-large') &&<div className={Title}>{t('Tier')}</div>}
+            {(isCompact || widgetSize !== 'x-large') && <div className={Title}>{t('Tier')}</div>}
             <a href={MOBA_TIER_LIST_URL} target="_blank">
               <TierIcon alt={`LoL tier list for every role in ${patch} patch`} name={tierLevel} />
             </a>
@@ -89,27 +117,30 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
       </div>
 
       <div className={Col}>
-        <div className={Title}>{t('Items')}</div>
-        <div>
-          {itemsBuild && <ItemsBuildChain itemsBuild={itemsBuild} widgetSize={widgetSize}/>}
+        <div className={Title}>
+          {gameModePrefix} {t('Items')}
         </div>
+        <div>{itemsBuild && <ItemsBuildChain itemsBuild={itemsBuild} widgetSize={widgetSize} />}</div>
       </div>
 
       <div className={clsx(Col, SkillOrderRow)}>
-
         {!isCompact && abilities && skillOrder && (
           <div>
             <div className={TitleWrapper}>
-              <div className={Title}>{t('Skill Order')}</div>
-              {skillMaxOrder && <ChampionAbilitiesOrderBar skillsKeys={skillMaxOrder}/>}
+              <div className={Title}>
+                {gameModePrefix} {t('Skill Order')}
+              </div>
+              {skillMaxOrder && <ChampionAbilitiesOrderBar skillsKeys={skillMaxOrder} />}
             </div>
-            <ChampionAbilitiesOrder abilities={abilities} skillOrder={skillOrder}/>
+            <ChampionAbilitiesOrder abilities={abilities} skillOrder={skillOrder} />
           </div>
         )}
 
         {isCompact && (
           <div className={SkillPriority}>
-            <div className={Title}>{t('Skill Priority')}</div>
+            <div className={Title}>
+              {gameModePrefix} {t('Skill Priority')}
+            </div>
             {abilitiesOrder && (
               <CompactChampionAbilitiesOrderBar
                 abilities={abilitiesOrder}
@@ -121,16 +152,16 @@ export const ChampionBuildWidgetBody: FunctionComponent<Props> = props => {
 
         {isCompact && !isSmall && (
           <div>
-            <div className={Title}>{t('Skill Order')}</div>
-            {skillOrder && <CompactChampionAbilitiesOrder skillOrder={skillOrder}/>}
+            <div className={Title}>
+              {gameModePrefix} {t('Skill Order')}
+            </div>
+            {skillOrder && <CompactChampionAbilitiesOrder skillOrder={skillOrder} />}
           </div>
         )}
       </div>
     </div>
   );
 };
-
-
 
 const Content = (isSmall: boolean) => css`
   width: 100%;
@@ -148,6 +179,11 @@ const Col = css`
   }
 `;
 
+const augmentsCss = css`
+  width: 340px;
+  max-width: 100%;
+`;
+
 const Row = css`
   display: flex;
   flex-wrap: wrap;
@@ -159,7 +195,7 @@ const Row = css`
     padding: 10px 0;
     margin-right: 20px;
 
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
   }
@@ -170,12 +206,12 @@ const FlexEnd = css`
 `;
 
 const CompactRunesWrapper = css`
-  margin-right: 0!important;
+  margin-right: 0 !important;
 `;
 
 const Title = css`
   ${Text12x500Mixin};
-  color: var(--moba-widget-text-primary-light)!important;
+  color: var(--moba-widget-text-primary-light) !important;
   text-transform: uppercase;
   margin: 0 8px 12px 0;
 `;
@@ -196,7 +232,7 @@ const TitleWrapper = css`
   display: flex;
   margin: 0;
 
-  h3{
+  h3 {
     margin: 0 12px 0 0;
   }
 `;
@@ -216,7 +252,7 @@ const TierListLinkWrapper = css`
 
   span {
     ${Text12x500Mixin};
-    color: var(--moba-widget-text-secondary)!important;
+    color: var(--moba-widget-text-secondary) !important;
     display: block;
     position: absolute;
 
@@ -228,11 +264,11 @@ const TierListLinkWrapper = css`
     visibility: hidden;
     opacity: 0;
 
-    transition: opacity ease .2s;
+    transition: opacity ease 0.2s;
   }
 
-  &:hover{
-    span{
+  &:hover {
+    span {
       visibility: visible;
       opacity: 1;
     }
@@ -240,15 +276,14 @@ const TierListLinkWrapper = css`
 `;
 
 const TierListLinkWrapperPosition = (widgetSize: WidgetSize) => {
-
   switch (widgetSize) {
     case 'small':
       return css`
         bottom: 24px;
         right: 20px;
 
-        &:hover{
-          span{
+        &:hover {
+          span {
             visibility: hidden;
             opacity: 0;
           }
@@ -273,5 +308,4 @@ const TierListLinkWrapperPosition = (widgetSize: WidgetSize) => {
         right: 20px;
       `;
   }
-}
-
+};

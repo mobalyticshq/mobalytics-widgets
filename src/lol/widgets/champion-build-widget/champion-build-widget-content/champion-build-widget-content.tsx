@@ -12,7 +12,7 @@ import {
   LolChampionWidgetDynamicQuery,
   LolChampionWidgetDynamicQueryVariables,
 } from '../../../types/gql-dynamic/LolChampionWidgetDynamicQuery';
-import { LolChampionBuildType, Region, Rolename } from '../../../types/gql-dynamic/globalTypes';
+import { GameMode, LolChampionBuildType, Region, Rolename } from '../../../types/gql-dynamic/globalTypes';
 import {
   LolChampionWidgetStaticQuery,
   LolChampionWidgetStaticQueryVariables,
@@ -26,6 +26,8 @@ import { WidgetFooter } from '../../../components/widget-footer/widget-footer.co
 import {
   formatAbilities,
   formatAbilityOrder,
+  formatAugments,
+  formatChampionAugmentsByRiotId,
   formatItemsBuild,
   formatSkillMaxOrder,
   formatSkillOrder,
@@ -49,6 +51,7 @@ interface Props {
   widgetWidth: NNumber;
   widgetSize: Nullable<WidgetSize>;
   showTierIcon: boolean;
+  gameMode: GameMode;
   className?: string;
 }
 
@@ -57,7 +60,7 @@ const SMALL_WIDGET_WIDTH = 560;
 
 export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   const { champion, role, compact, widgetWidth, region, patch, buildID, buildType, widgetSize, showTierIcon } = props;
-  const { className } = props;
+  const { gameMode, className } = props;
 
   const isSmall = !!(widgetWidth && widgetWidth < SMALL_WIDGET_WIDTH);
   const isCompact = compact || isSmall;
@@ -69,7 +72,7 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   } = useQuery<LolChampionWidgetDynamicQuery, LolChampionWidgetDynamicQueryVariables>(
     DYNAMIC_CHAMPION_BUILD_QUERY_GQL,
     {
-      variables: { champion, role, region, patch, buildID, buildType },
+      variables: { champion, role, region, patch, buildID, buildType, gameMode },
       client: lolApi.dynamicDataClient,
     }
   );
@@ -87,16 +90,10 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   const error = dynamicError || staticError;
 
   if (loading) {
-    return (
-      <ChampionBuildWidgetLoading
-        className={clsx(Wrapper, className)}
-        isCompact={isCompact}
-        isSmall={isSmall}
-      />
-    );
+    return <ChampionBuildWidgetLoading className={clsx(Wrapper, className)} isCompact={isCompact} isSmall={isSmall} />;
   }
 
-  if (error || (!staticData)) {
+  if (error || !staticData) {
     return (
       <ChampionBuildWidgetError
         imgSrc={amumuCrying()}
@@ -113,16 +110,31 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
 
   const championStats = firstItem(staticData?.champion)?.flatData;
   const championBuild = dynamicData?.lol?.champion?.build;
-  const gameItems =  extractFromFlatList([...(staticData.itemsChunk1 || []), ...(staticData.itemsChunk2 || [])])?.filter(it => !!it.riotId);
+  const gameItems = extractFromFlatList([...(staticData.itemsChunk1 || []), ...(staticData.itemsChunk2 || [])])?.filter(
+    it => !!it.riotId
+  );
 
   // build props
-  const { type, vsChampionSlug, proPlayer, spells, items, skillOrder: rawSkillOrder, skillMaxOrder: rawSkillMaxOrder, stats, patch: buildPatch, perks, role: buildRole} = championBuild || {};
+  const {
+    type,
+    vsChampionSlug,
+    proPlayer,
+    spells,
+    items,
+    skillOrder: rawSkillOrder,
+    skillMaxOrder: rawSkillMaxOrder,
+    stats,
+    patch: buildPatch,
+    perks,
+    role: buildRole,
+  } = championBuild || {};
 
   // stats props
   const { abilities: rawAbilities, name: championName } = championStats || {};
 
   // header props
-  const winRate = stats && stats.wins && stats.matchCount ? calcWinRate(stats.wins, stats.matchCount - stats.wins) : null
+  const winRate =
+    stats && stats.wins && stats.matchCount ? calcWinRate(stats.wins, stats.matchCount - stats.wins) : null;
   const abilities = rawAbilities && formatAbilities(rawAbilities);
 
   // build props
@@ -137,12 +149,16 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
 
   const buildUrl = genChampionPath(champion, ChampionPageSection.BUILDS);
 
-  if(championName){
+  const augmentsByRiotId = formatChampionAugmentsByRiotId(extractFromFlatList(staticData?.championAugments));
+  const augments = formatAugments(championBuild?.augmentOptions, augmentsByRiotId);
+
+  if (championName) {
     const buildName = formatBuildName(championName, type, vsChampionSlug, proPlayer?.name);
     return (
       <div className={clsx(Wrapper, className)}>
         <BuildHeader
-          championName={championName} championSlug={champion}
+          championName={championName}
+          championSlug={champion}
           buildName={buildName}
           roleName={buildRole}
           patch={buildPatch}
@@ -150,38 +166,38 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
           gamesCount={!isSmall ? stats?.matchCount : null}
           region={region}
         />
-        {
-          isBuildAvailable ? (
-            <ChampionBuildWidgetBody
-              abilities={abilities}
-              itemsBuild={itemsBuild}
-              skillOrder={skillOrder}
-              abilitiesOrder={abilitiesOrder}
-              skillMaxOrder={skillMaxOrder}
-              spells={spells}
-              perks={perks}
-              tierLevel={tierLevel}
-              patch={buildPatch}
-              isCompact={isCompact}
-              isSmall={isSmall}
-              widgetSize={widgetSize}
-              showTierIcon={showTierIcon}
-              className={bgClass}
-            />
-          ) : (
-            <ChampionBuildWidgetError
-              imgSrc={emoteImage('blitzcrank.png')}
-              title={'Not Enough Data'}
-              text={`We need more game data to show a reliable build. This may be because a new patch just started or because there aren't enough players playing ${championName} as ${role}.`}
-              link={{
-                text: `Check other ${championName} builds on Mobalytics`,
-                url: buildUrl,
-              }}
-              className={clsx(Wrapper, bgClass)}
-            />
-          )
-        }
-        <WidgetFooter championName={championName} buildUrl={buildUrl} isSmall={isSmall}/>
+        {isBuildAvailable ? (
+          <ChampionBuildWidgetBody
+            abilities={abilities}
+            itemsBuild={itemsBuild}
+            skillOrder={skillOrder}
+            abilitiesOrder={abilitiesOrder}
+            skillMaxOrder={skillMaxOrder}
+            augments={augments}
+            spells={spells}
+            perks={perks}
+            tierLevel={tierLevel}
+            patch={buildPatch}
+            isCompact={isCompact}
+            isSmall={isSmall}
+            widgetSize={widgetSize}
+            showTierIcon={showTierIcon}
+            gameMode={gameMode}
+            className={bgClass}
+          />
+        ) : (
+          <ChampionBuildWidgetError
+            imgSrc={emoteImage('blitzcrank.png')}
+            title={'Not Enough Data'}
+            text={`We need more game data to show a reliable build. This may be because a new patch just started or because there aren't enough players playing ${championName} as ${role}.`}
+            link={{
+              text: `Check other ${championName} builds on Mobalytics`,
+              url: buildUrl,
+            }}
+            className={clsx(Wrapper, bgClass)}
+          />
+        )}
+        <WidgetFooter championName={championName} buildUrl={buildUrl} isSmall={isSmall} />
       </div>
     );
   }
@@ -189,19 +205,19 @@ export const ChampionBuildWidgetContent: FunctionComponent<Props> = props => {
   return null;
 };
 
-
 const Wrapper = css`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   min-width: ${MIN_WIDGET_WIDTH}px;
-  background-color: var(--moba-widget-bg-secondary-light)!important;
+  background-color: var(--moba-widget-bg-secondary-light) !important;
   border-radius: 6px;
 `;
 
 const Background = (bg: string) => css`
-  background: radial-gradient(98% 40% at 117% 10%, rgba(0, 0, 0, 0.6) 0%, var(--moba-widget-bg-secondary-light) 100%), url('${bg}');
+  background: radial-gradient(98% 40% at 117% 10%, rgba(0, 0, 0, 0.6) 0%, var(--moba-widget-bg-secondary-light) 100%),
+    url('${bg}');
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 300px;

@@ -1,5 +1,6 @@
 import { gql } from '../../../../common/utils/graphql';
 import { LolGameItemFragment } from './game-items-query.gql';
+import { LolChampionAugmentFragmentGql } from './augments.gql';
 
 export const STATIC_CHAMPION_BUILD_QUERY_GQL = gql`
   query LolChampionWidgetStaticQuery($filter: String!) {
@@ -34,6 +35,12 @@ export const STATIC_CHAMPION_BUILD_QUERY_GQL = gql`
         ...LolGameItemFragment
       }
     }
+    championAugments: queryChampionsAugmentsV1Contents(top: 200) {
+      flatData {
+        ...LolChampionAugmentFragment
+      }
+    }
   }
   ${LolGameItemFragment}
+  ${LolChampionAugmentFragmentGql}
 `;

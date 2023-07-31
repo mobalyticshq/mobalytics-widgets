@@ -38,10 +38,31 @@ export const BuildHeader: FunctionComponent<Props> = props => {
               {formatRoleName(roleName)}
             </Fragment>
           )}
-          {patch && <Fragment>{` ${MiddleDot} `}{t('Patch')}<span>{patch}</span></Fragment>}
-          {winRate && <Fragment>{` ${MiddleDot} `}{t('Win Rate')}<WinRate winRate={winRate}/></Fragment>}
-          {gamesCount && <Fragment>based on <span>{formatNumber(gamesCount)}</span> matches</Fragment>}
-          {gamesCount && region && <Fragment> from <span>{region}</span> region</Fragment>}
+          {patch && (
+            <Fragment>
+              {roleName ? ` ${MiddleDot} ` : ''}
+              {t('Patch')}
+              <span>{patch}</span>
+            </Fragment>
+          )}
+          {winRate && (
+            <Fragment>
+              {` ${MiddleDot} `}
+              {t('Win Rate')}
+              <WinRate winRate={winRate} />
+            </Fragment>
+          )}
+          {gamesCount && (
+            <Fragment>
+              based on <span>{formatNumber(gamesCount)}</span> matches
+            </Fragment>
+          )}
+          {gamesCount && region && (
+            <Fragment>
+              {' '}
+              from <span>{region}</span> region
+            </Fragment>
+          )}
         </div>
       </div>
     </div>
@@ -60,7 +81,7 @@ const Wrapper = css`
 
 const Title = css`
   ${Text12x500Mixin};
-  color: var(--moba-widget-text-primary-light)!important;
+  color: var(--moba-widget-text-primary-light) !important;
   text-transform: uppercase;
 `;
 
@@ -73,7 +94,6 @@ const ChampionImage = css`
   margin-right: 8px;
 `;
 
-
 const RoleIconCss = css`
   width: 12px;
   height: 12px;
@@ -81,15 +101,14 @@ const RoleIconCss = css`
   margin-right: 8px;
 `;
 
-
 const Text = css`
   ${Text12x400Mixin};
-  color: var(--moba-widget-text-secondary)!important;
+  color: var(--moba-widget-text-secondary) !important;
   min-width: 300px;
   display: flex;
   align-items: center;
 
-  span{
+  span {
     font-weight: 500;
     color: var(--moba-widget-text-primary-light);
     margin: 0 3px;

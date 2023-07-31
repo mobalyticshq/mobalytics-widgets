@@ -10,7 +10,7 @@ export const collectPropsFromElement = (element: Element): Props => {
   Object.keys(attrs).forEach((key: string) => {
     if (Object.prototype.hasOwnProperty.call(attrs, key)) {
       const attr: Attr = attrs[key as unknown as number];
-      if (attr.name.startsWith('data-')) {
+      if (attr.name.startsWith('data-moba-')) {
         const propName = attr.name.replace(/-([a-z])/gi, (all, letter) => letter.toUpperCase());
         propName && attr.nodeValue && (props[propName] = attr.nodeValue);
       }

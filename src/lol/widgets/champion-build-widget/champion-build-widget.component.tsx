@@ -12,6 +12,8 @@ import { MOBA_APP_LINK } from '../../config';
 import { formatBuildType } from '../../utils/build-data-format.utils';
 import { WidgetThemeProvider } from '../../components/theme-provider/theme-provider';
 import { WidgetSize } from '../../types/widget-props';
+import { validateStrEnumValue } from '../../../common/utils/lang';
+import { GameMode } from '../../types/gql-dynamic/globalTypes';
 
 interface Props {
   champion: NString;
@@ -19,6 +21,7 @@ interface Props {
   region: NString;
   patch: NString;
   buildType: NString;
+  gameMode: NString;
   buildID: NString;
   widgetWidth: NNumber;
   showTierIcon: boolean;
@@ -26,11 +29,12 @@ interface Props {
 }
 
 const ChampionBuildWidget: FunctionComponent<Props> = props => {
-  const { isCompact, champion, role, widgetWidth, patch, region, buildType, buildID, showTierIcon } = props;
+  const { isCompact, champion, role, widgetWidth, patch, region, buildType, buildID, gameMode, showTierIcon } = props;
   const validatedRole = validateRolename(role);
   const validatedRegion = validateRegion(region);
+  const validatedGameMode = validateStrEnumValue<GameMode>(GameMode, gameMode) || GameMode.SUMMONER_RIFT;
   const validatedBuildType = buildType ? formatBuildType(buildType) : null;
-  const [height, widgetSize] = widgetWidth && getWidgetHeight(widgetWidth, !!isCompact) || [];
+  const [height, widgetSize] = (widgetWidth && getWidgetHeight(widgetWidth, !!isCompact, validatedGameMode)) || [];
 
   return (
     <WidgetThemeProvider>
@@ -41,12 +45,13 @@ const ChampionBuildWidget: FunctionComponent<Props> = props => {
           region={validatedRegion}
           patch={patch}
           buildType={validatedBuildType}
-          buildID={!!buildID ? parseInt(buildID): null}
+          buildID={!!buildID ? parseInt(buildID) : null}
           compact={!!isCompact}
           widgetWidth={widgetWidth}
           widgetSize={widgetSize}
-          className={clsx(Wrapper(height ? `${height}px`: 'auto'))}
+          className={clsx(Wrapper(height ? `${height}px` : 'auto'))}
           showTierIcon={showTierIcon}
+          gameMode={validatedGameMode}
         />
       ) : (
         <ChampionBuildWidgetError
@@ -57,19 +62,26 @@ const ChampionBuildWidget: FunctionComponent<Props> = props => {
             text: 'Check Mobalytics Status',
             url: MOBA_APP_LINK,
           }}
-          className={clsx(Wrapper(height ? `${height}px`: 'auto'))}
+          className={clsx(Wrapper(height ? `${height}px` : 'auto'))}
         />
       )}
     </WidgetThemeProvider>
   );
 };
 
-
-function getWidgetHeight (widgetWidth: number, isCompact: boolean): Nullable<[number, WidgetSize]> {
-  if(widgetWidth >= 740) return [isCompact ? 466 : 778, 'x-large'];
-  if(widgetWidth >= 600) return [isCompact ? 616 : 862, 'large'];
-  if(widgetWidth >= 560) return [isCompact ? 616 : 862, 'medium'];
-  if(widgetWidth >= 300) return [isCompact ? 682 : 682, 'small'];
+function getWidgetHeight(widgetWidth: number, isCompact: boolean, gameMode: GameMode): Nullable<[number, WidgetSize]> {
+  if (gameMode === GameMode.ARENA) {
+    if (widgetWidth >= 740) return [isCompact ? 668 : 762, 'x-large'];
+    if (widgetWidth >= 600) return [isCompact ? 740 : 762, 'large'];
+    if (widgetWidth >= 560) return [isCompact ? 740 : 762, 'medium'];
+    if (widgetWidth >= 300) return [isCompact ? 758 : 758, 'small'];
+  }
+  if (gameMode === GameMode.ARAM || gameMode === GameMode.SUMMONER_RIFT) {
+    if (widgetWidth >= 740) return [isCompact ? 466 : 778, 'x-large'];
+    if (widgetWidth >= 600) return [isCompact ? 616 : 782, 'large'];
+    if (widgetWidth >= 560) return [isCompact ? 616 : 782, 'medium'];
+    if (widgetWidth >= 300) return [isCompact ? 682 : 682, 'small'];
+  }
   return null;
 }
 

@@ -35,7 +35,7 @@ export function useTooltipHook<TriggerElement extends Element = Element, PortalE
   const themeClassName = useContext(WidgetThemeTheme);
 
   const triggerHandler = useCallback((e: Event) => {
-    if (!triggerElementRef.current) {
+    if (!triggerElementRef.current && !!e?.currentTarget) {
       triggerElementRef.current = e.currentTarget as TriggerElement;
       setTriggerState(1);
     }

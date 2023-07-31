@@ -16,3 +16,7 @@ export function commonIcon(name: string): string {
 export function hexTierIcon(tier: TierLevel): string {
   return `${CDN_COMMON_ICON_PATH}/hex-tiers/${tier.toUpperCase()}.svg?1`;
 }
+
+export function augmentsImage(slug: string): string {
+  return `${CDN_COMMON_ICON_PATH}/lol-arena-augment/${slug}.svg?1`;
+}

@@ -6,6 +6,11 @@ export const DefaultTheme = css`
   --moba-widget-text-primary-dark: #8890b5;
   --moba-widget-text-secondary: #6b6889;
 
+  --moba-widget-base-100: #382f66;
+  --moba-widget-grey-100: #b3b4d0;
+  --moba-widget-base-500: #151136;
+  --moba-widget-grey-300: #6b6889;
+
   --moba-widget-link-primary: #f2bf43;
   --moba-widget-link-hover: #38C6F4;
 

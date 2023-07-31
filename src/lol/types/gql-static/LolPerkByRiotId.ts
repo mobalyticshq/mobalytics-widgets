@@ -3,14 +3,14 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-type GqlTagsScalar = string[] | null;
-
 // ====================================================
 // GraphQL query operation: LolPerkByRiotId
 // ====================================================
 
+import { GqlTagsScalar } from './globalTypes';
+
 export interface LolPerkByRiotId_perks_flatData {
-  __typename: "RunesV1DataFlatDto";
+  __typename: 'RunesV1DataFlatDto';
   riotId: number | null;
   name: string | null;
   slug: string | null;
@@ -21,7 +21,7 @@ export interface LolPerkByRiotId_perks_flatData {
 }
 
 export interface LolPerkByRiotId_perks {
-  __typename: "RunesV1";
+  __typename: 'RunesV1';
   /**
    * The id of the Perks content.
    */

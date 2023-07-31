@@ -3,20 +3,20 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-type GqlTagsScalar = string[] | null;
-
 // ====================================================
 // GraphQL query operation: LolGameItemByRiotId
 // ====================================================
 
+import { GqlTagsScalar } from './globalTypes';
+
 export interface LolGameItemByRiotId_items_flatData_tags_flatData {
-  __typename: "GameItemTagV1DataFlatDto";
+  __typename: 'GameItemTagV1DataFlatDto';
   name: string | null;
   slug: string | null;
 }
 
 export interface LolGameItemByRiotId_items_flatData_tags {
-  __typename: "GameItemTagV1";
+  __typename: 'GameItemTagV1';
   /**
    * The flat data of the Game Item Tag content.
    */
@@ -24,14 +24,14 @@ export interface LolGameItemByRiotId_items_flatData_tags {
 }
 
 export interface LolGameItemByRiotId_items_flatData_type_flatData {
-  __typename: "GameItemTypeV1DataFlatDto";
+  __typename: 'GameItemTypeV1DataFlatDto';
   slug: string | null;
   name: string | null;
   description: string | null;
 }
 
 export interface LolGameItemByRiotId_items_flatData_type {
-  __typename: "GameItemTypeV1";
+  __typename: 'GameItemTypeV1';
   /**
    * The flat data of the Game Item Type content.
    */
@@ -39,13 +39,13 @@ export interface LolGameItemByRiotId_items_flatData_type {
 }
 
 export interface LolGameItemByRiotId_items_flatData_fitForChampionType_flatData {
-  __typename: "ChampionTypeV1DataFlatDto";
+  __typename: 'ChampionTypeV1DataFlatDto';
   slug: string | null;
   name: string | null;
 }
 
 export interface LolGameItemByRiotId_items_flatData_fitForChampionType {
-  __typename: "ChampionTypeV1";
+  __typename: 'ChampionTypeV1';
   /**
    * The flat data of the Champion Type content.
    */
@@ -53,7 +53,7 @@ export interface LolGameItemByRiotId_items_flatData_fitForChampionType {
 }
 
 export interface LolGameItemByRiotId_items_flatData {
-  __typename: "GameItemsV1DataFlatDto";
+  __typename: 'GameItemsV1DataFlatDto';
   riotId: number | null;
   name: string | null;
   /**
@@ -79,7 +79,7 @@ export interface LolGameItemByRiotId_items_flatData {
 }
 
 export interface LolGameItemByRiotId_items {
-  __typename: "GameItemsV1";
+  __typename: 'GameItemsV1';
   /**
    * The flat data of the Game Items content.
    */
