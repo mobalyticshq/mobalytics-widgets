@@ -151,7 +151,7 @@ export function formatAugments(
           return acc;
         }, []);
 
-        const list = sortBy(augments, it => it.pickRate || 0, numberComparator);
+        const list = sortBy(augments, it => it.pickRate || 0, numberComparator)?.slice(0, 3);
 
         acc.push({ round: String(formatAugmentsRound(index)), list });
       }

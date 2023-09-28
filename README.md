@@ -4,7 +4,7 @@
 
 # Mobalytics Widgets
 
-Mobalytics Widgets allow you to install useful widgets with data insights for [League of Legends](https://app.mobalytics.gg/) to your website.
+Mobalytics Widgets allow you to install useful widgets with data insights for [League of Legends](https://mobalytics.gg/) to your website.
 
 :star: Star us on GitHub — it motivates us a lot!
 
@@ -109,14 +109,14 @@ LoL Champion Tooltip Widget uses links to Mobalytics champion build pages as a h
 **Example**
 ```
 <a target="_blank"
-   href="https://app.mobalytics.gg/lol/champions/khazix/build"
+   href="https://mobalytics.gg/lol/champions/khazix/build"
    data-moba-tooltip="lol-champion-tooltip">Khazix link with tooltip</a>
 ```
 
 ## FAQ
 
 ### How to find champion slug to use in a widget?
-1. Open Mobalytics [Champions Page](https://app.mobalytics.gg/lol/champions)
+1. Open Mobalytics [Champions Page](https://mobalytics.gg/lol/champions)
 2. Navigate to specific champion page e.g "ahri"
 3. Copy champion slug from the page URL
 

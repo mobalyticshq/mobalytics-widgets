@@ -5,7 +5,7 @@ export const CDN_COMMON_ICON_PATH = 'https://cdn.mobalytics.gg/assets/common/ico
 export const CDN_LOL_VIDEO_PATH = 'https://cdn.mobalytics.gg/assets/lol/video';
 export const CDN_VERSION = 'v0.0.1';
 
-export const MOBA_APP_LINK = 'https://app.mobalytics.gg';
-export const MOBA_HOME_URL = 'https://app.mobalytics.gg/lol';
-export const MOBA_TIER_LIST_URL = 'https://app.mobalytics.gg/lol/tier-list';
-export const MOBA_WIDGET_REPO_URL = 'https://app.mobalytics.gg/lol/glp/champion-widgets-and-tooltips';
+export const MOBA_APP_LINK = 'https://mobalytics.gg';
+export const MOBA_HOME_URL = 'https://mobalytics.gg/lol';
+export const MOBA_TIER_LIST_URL = 'https://mobalytics.gg/lol/tier-list';
+export const MOBA_WIDGET_REPO_URL = 'https://mobalytics.gg/lol/glp/champion-widgets-and-tooltips';
