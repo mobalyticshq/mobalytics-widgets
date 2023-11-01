@@ -77,10 +77,10 @@ function getWidgetHeight(widgetWidth: number, isCompact: boolean, gameMode: Game
     if (widgetWidth >= 300) return [isCompact ? 758 : 758, 'small'];
   }
   if (gameMode === GameMode.ARAM || gameMode === GameMode.SUMMONER_RIFT) {
-    if (widgetWidth >= 740) return [isCompact ? 466 : 778, 'x-large'];
-    if (widgetWidth >= 600) return [isCompact ? 616 : 782, 'large'];
-    if (widgetWidth >= 560) return [isCompact ? 616 : 782, 'medium'];
-    if (widgetWidth >= 300) return [isCompact ? 682 : 682, 'small'];
+    if (widgetWidth >= 710) return [isCompact ? 466 : 778, 'x-large'];
+    if (widgetWidth >= 600) return [isCompact ? 698 : 864, 'large'];
+    if (widgetWidth >= 560) return [isCompact ? 698 : 864, 'medium'];
+    if (widgetWidth >= 300) return [isCompact ? 752 : 682, 'small'];
   }
   return null;
 }
