@@ -1,0 +1,4 @@
+# CODEOWNERS
+# Auto-requests review from @ivankolesnikov-lgtm on any change under .github/
+# Managed centrally across the mobalyticshq org — keep in sync.
+/.github/ @ivankolesnikov-lgtm
